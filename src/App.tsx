@@ -1,15 +1,19 @@
-import AboutUs from "./pages/AboutUs"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";   
+import AboutUs from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
+
 
 function App() {
 
   return (
-    <>
-      <div className="text-3xl font-bold underline">
-        Hello world!
-      <AboutUs />
-      </div>
-    </>
-  )
+<Router>
+  <Routes>
+    <Route path="/contactus" element={<ContactUs/>}/>
+    <Route path="/aboutus" element={<AboutUs/>}/>
+
+  </Routes>
+</Router>
+  );
 }
 
-export default App
+export default App;

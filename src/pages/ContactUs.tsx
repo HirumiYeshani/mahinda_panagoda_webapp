@@ -2,9 +2,9 @@ import React from 'react'
 
 const ContactUs:React.FC = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+    <h1 className='bg-amber-400 p-10'>Hello</h1>
+    </>
   )
 }
 
