@@ -1,13 +1,12 @@
-import AboutUs from "./pages/AboutUs"
+import Footer from "./components/Footer"
+import Navbar from "./components/Navbar"
 
 function App() {
 
   return (
     <>
-      <div className="text-3xl font-bold underline">
-        Hello world!
-      <AboutUs />
-      </div>
+      <Navbar/>
+      <Footer />
     </>
   )
 }
