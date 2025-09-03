@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
 
       <div className="absolute bottom-0 left-0 w-full pb-8 bg-gradient-to-t from-black/90 to-transparent">
         <div className='w-11/12 md:w-5/6 mx-auto'>
-          <h1 className="text-[48px] leading-[62px] font-[belda] font-semibold mb-4 tracking-wide text-white">
+          <h1 className="lg:text-[48px] lg:leading-[62px] text-[40px] font-[belda] font-semibold mb-4 tracking-wide text-white">
           Serving Families with Dignity{' '}
           <span className="text-secondary font-[belda]">Since 2000</span>
         </h1>

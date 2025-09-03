@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
         </p>
         <a
           href="tel:+94711000700"
-          className="bg-secondary text-black text-[20px] rounded-lg mt-5 px-4 py-3.5 flex items-center"
+          className="bg-secondary hover:bg-secondary/90 text-black text-[20px] rounded-lg mt-5 px-4 py-3.5 flex items-center"
         >
           <span className="px-2 sm:px-4">Call Now</span>
         </a>
@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
       <img className="w-full bg-black" src={img} alt="footerTopImage" />
 
       {/* footer info */}
-      <div className="bg-black text-gray-300 bg-gradient-to-b justify-center">
+      <div className="bg-black text-white/70 bg-gradient-to-b justify-center">
         <div className="flex flex-col sm:flex-row flex-wrap lg:w-5/6 md:w-11/12 w-11/12 mx-auto justify-between gap-6 py-10 text-xl">
           
           {/* Logo & Description */}
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
 
           {/* Packages */}
           <div>
-            <h2 className="mb-4 font-semibold text-gray-200">Packages</h2>
+            <h2 className="mb-4 font-semibold text-white">Packages</h2>
             <ul className="space-y-2">
               <li><a href="#">VIP Platinum Package</a></li>
               <li><a href="#">VIP Gold Package</a></li>
@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
 
           {/* Pages */}
           <div>
-            <h2 className="mb-4 font-semibold text-gray-200">Pages</h2>
+            <h2 className="mb-4 font-semibold text-white">Pages</h2>
             <ul className="space-y-2">
               <li><a href="home">Home</a></li>
               <li><a href="aboutUs">About us</a></li>
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h2 className="mb-4 font-semibold text-gray-200">Contact Us</h2>
+            <h2 className="mb-4 font-semibold text-white">Contact Us</h2>
             <ul className="space-y-2">
               <li className="flex items-center">
                 <IoCallOutline className="size-5 mr-2" /> +94 71 1000 700
@@ -90,12 +90,12 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className='absolute bg-black w-full bg-gradient-to-b from-black to bg-green-900'>
-          <div className="flex flex-col md:flex-row lg:w-5/6 md:w-11/12 mx-auto items-center justify-between border-t border-gray-300 mt-5 pt-4 pb-6 text-xs">
-          <p>
+        <div className='absolute w-full bg-gradient-to-b from-black to-green-800'>
+          <div className="flex flex-col lg:flex-row lg:w-5/6 w-11/12 mx-auto items-center justify-between border-t border-white mt-5 pt-4 pb-6 text-xs">
+          <p className='mb-2 lg:mb-0'>
             All rights reserved | Powered by All In One IT Solutions
           </p>
-          <div className="flex gap-10">
+          <div className="flex flex-row gap-10">
             <p>Privacy Policy</p>
             <p>Terms of Services</p>
           </div>
