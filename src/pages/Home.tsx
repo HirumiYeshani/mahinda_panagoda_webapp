@@ -1,8 +1,8 @@
 import React from 'react'
-import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
-const ContactUs:React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div>
       <section className='w-full'>
@@ -16,4 +16,4 @@ const ContactUs:React.FC = () => {
   )
 }
 
-export default ContactUs
+export default Home

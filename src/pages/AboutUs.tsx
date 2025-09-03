@@ -6,15 +6,15 @@ import Footer from '../components/Footer'
 const AboutUs:React.FC = () => {
   return (
     <div>
-      <section>
+      <section className='w-full'>
         <Navbar />
       </section>
 
       <section className='mb-[90px]'>
-        <Hero/>
+        <Hero />
       </section>
 
-      <section className='mt-[90px]'>
+      <section>
         <Footer />
       </section>
     </div>
