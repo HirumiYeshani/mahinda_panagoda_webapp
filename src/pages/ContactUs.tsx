@@ -1,11 +1,19 @@
-import React from 'react'
+import React from "react";
+import HeroSection from "../components/contact/HeroSection";
+import ContactForm from "../components/contact/ContactForm";
 
-const ContactUs:React.FC = () => {
+const ContactUs: React.FC = () => {
   return (
-    <>
-    <h1 className='bg-amber-400 p-10'>Hello</h1>
-    </>
-  )
-}
+    <div className="font-[roboto]">
+      <section className="w-full">
+        <HeroSection />
+      </section>
 
-export default ContactUs
+      <section className="mt-[90px] md:w-5/6 mx-auto w-11/12">
+        <ContactForm />
+      </section>
+    </div>
+  );
+};
+
+export default ContactUs;

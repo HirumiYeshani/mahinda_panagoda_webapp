@@ -1,0 +1,27 @@
+@theme {
+    --color-primary: #005B32;
+    --color-secondary:#ECE5A7;
+    --color-ternary: #191818;
+    --color-background: #FFFFFF;
+}
+
+
+/*
+Mobile Responsive
+Hero Section 
+ height
+    sm:h-[400px]
+
+ h1
+    sm:text-[40px]
+    sm:leading-[50px]
+ p
+    sm:text-[16px]
+    sm:leading-[20px]
+
+Button
+    sm:font-[20px]
+    sm:py-4
+    sm:px-8
+    sm:w-fit
+*/
