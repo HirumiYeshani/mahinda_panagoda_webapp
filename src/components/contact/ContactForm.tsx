@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import emailjs from "emailjs-com";
 
-
 import locationicon from "../../assets/img/contactUs/FiMapPin.svg";
 import phoneicon from "../../assets/img/contactUs/phone.svg";
 import emailicon from "../../assets/img/contactUs/email.svg";
@@ -50,26 +49,39 @@ const ContactForm: React.FC = () => {
 
   const [loading, setLoading] = useState(false);
 
-const textFieldStyles = {
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": { borderColor: "black/20", borderWidth: "2px" },
-    "&:hover fieldset": { borderColor: "black/80", borderWidth: "2px" },
-    "&.Mui-focused fieldset": { borderColor: "black", borderWidth: "2px" },
-    "& input": {
-      padding: "28px 8px",  // adjust top/bottom for desired height
-      lineHeight: "10px",     // controls text vertical alignment
-      boxSizing: "border-box", // ensures padding affects height
-    },
-    "& textarea": {
-      padding: "14px 16px",
-      lineHeight: "20px",
-      boxSizing: "border-box",
-    },
-  },
-  "& .MuiInputLabel-root": { color: "black/20" },
-  "& .MuiInputLabel-root.Mui-focused": { color: "black" },
-};
+  const textFieldStyles = {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#19181830",
+        borderWidth: "2px",
+        borderRadius: "0.5rem",
+      },
+      "&:hover fieldset": { borderColor: "black/80", borderWidth: "2px" },
+      "&.Mui-focused fieldset": { borderColor: "black", borderWidth: "2px" },
 
+      // input + textarea styling
+      "& input": {
+        height: "55px",
+        padding: "0 12px",
+        color: "#333333",
+        fontSize: "16px",
+        boxSizing: "border-box",
+        display: "flex",
+        alignItems: "center",
+      },
+      "& textarea": {
+        padding: "12px 14px",
+        color: "#333333",
+        fontSize: "16px",
+        lineHeight: "22px",
+        boxSizing: "border-box",
+      },
+    },
+
+    // label styling
+    "& .MuiInputLabel-root": { color: "#19181866" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "black" },
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -118,32 +130,31 @@ const textFieldStyles = {
     if (Object.keys(errors).length === 0) {
       setLoading(true);
 
-emailjs
-  .send(
-    "service_jwyxagc", 
-    "template_5ggh3dr", 
-    {
-      from_name: formValues.name,
-      contact: formValues.contact,
-      email: formValues.email,
-      message: formValues.message,
-    },
-    "dmvWovS7JIPnTHIB9" 
-  )
-  .then(
-    () => {
-      setLoading(false);
-      alert(" Your message has been sent successfully!");
-      setFormValues({ name: "", contact: "", email: "", message: "" });
-    },
-    () => {
-      setLoading(false);
-      alert(" Failed to send message. Please try again.");
+      emailjs
+        .send(
+          "service_jwyxagc",
+          "template_5ggh3dr",
+          {
+            from_name: formValues.name,
+            contact: formValues.contact,
+            email: formValues.email,
+            message: formValues.message,
+          },
+          "dmvWovS7JIPnTHIB9"
+        )
+        .then(
+          () => {
+            setLoading(false);
+            alert(" Your message has been sent successfully!");
+            setFormValues({ name: "", contact: "", email: "", message: "" });
+          },
+          () => {
+            setLoading(false);
+            alert(" Failed to send message. Please try again.");
+          }
+        );
     }
-  );
-  } 
-};
- 
+  };
 
   return (
     <>
@@ -160,7 +171,7 @@ emailjs
 
           {/* Contact Form */}
           <form
-            className="flex flex-col gap-6 sm:gap-8 font-[16px] sm:font-[18px]"
+            className="flex flex-col gap-5 sm:gap-7 font-[16px] sm:font-[18px]"
             onSubmit={handleSubmit}
             noValidate
           >
@@ -282,7 +293,11 @@ emailjs
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src={instagramicon} className="w-8 h-8" alt="Instagram" />
+                  <img
+                    src={instagramicon}
+                    className="w-8 h-8"
+                    alt="Instagram"
+                  />
                 </a>
                 <a
                   href="https://wa.me/94711000700"
@@ -313,12 +328,8 @@ emailjs
           </div>
         </div>
       </div>
-
-     
     </>
-    
-    );
-  };
-
+  );
+};
 
 export default ContactForm;
