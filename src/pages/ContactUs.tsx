@@ -5,11 +5,11 @@ import ContactForm from "../components/contact/ContactForm";
 const ContactUs: React.FC = () => {
   return (
     <div className="font-[roboto]">
-      <section className="w-full">
+      <section className="w-full lg:mb-30 mb-20">
         <HeroSection />
       </section>
 
-      <section className="mt-[90px] md:w-5/6 mx-auto w-11/12">
+      <section className="md:w-5/6 mx-auto w-11/12 lg:mb-30 mb-20">
         <ContactForm />
       </section>
     </div>

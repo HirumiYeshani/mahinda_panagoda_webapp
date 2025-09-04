@@ -1,6 +1,6 @@
 @theme {
-    --color-primary: #005B32;
-    --color-secondary:#ECE5A7;
+    --color-primary: #ECE5A7; 
+    --color-secondary: #005B32;
     --color-ternary: #191818;
     --color-background: #FFFFFF;
 }
