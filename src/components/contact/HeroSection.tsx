@@ -11,7 +11,8 @@ const HeroSection: React.FC = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-          <div className="px-4  lg:px-16 py-4 space-y-2 ">
+          <div className="w-11/12 mx-auto px-4 lg:px-16 py-4 space-y-2">
+
             <h1 className="text-[28px]  lg:text-[50px] leading-[34px] lg:leading-[62px] font-bold font-belda text-white">
               Here To Support You,{" "}
               <span className="text-primary">Anytime</span>

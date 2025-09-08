@@ -101,11 +101,11 @@ const ContactForm: React.FC = () => {
     //  Validation
     if (!formValues.name) {
       errors.name = true;
-      helpers.name = "Name is required.";
+      helpers.name = "Enter a name.";
     }
     if (!formValues.contact.trim()) {
       errors.contact = true;
-      helpers.contact = "Contact number is required.";
+      helpers.contact = "Enter a contact number.";
     } else if (!/^\d+$/.test(formValues.contact)) {
       errors.contact = true;
       helpers.contact = "Contact number must contain only numbers.";
@@ -115,10 +115,14 @@ const ContactForm: React.FC = () => {
     }
     if (!formValues.email) {
       errors.email = true;
-      helpers.email = "Email is required.";
+      helpers.email = "Enter a email.";
     } else if (!/\S+@\S+\.\S+/.test(formValues.email)) {
       errors.email = true;
       helpers.email = "Enter a valid email.";
+    }
+    if (!formValues.message) {
+      errors.message = true;
+      helpers.message = "Enter a message.";
     }
 
     setFormErrors({ ...formErrors, ...errors });
@@ -135,11 +139,21 @@ const ContactForm: React.FC = () => {
             contact: formValues.contact,
             email: formValues.email,
             message: formValues.message,
-          },
+          },   
           "dmvWovS7JIPnTHIB9"
         )
         .then(
-          () => {
+          async () => {
+            await emailjs.send(
+              "service_jwyxagc",
+              "template_8gj8034",
+              {
+                to_name: formValues.name,
+                to_email: formValues.email,
+              },
+              "dmvWovS7JIPnTHIB9"
+            );
+
             setLoading(false);
             Swal.fire({
               icon: "success",
@@ -246,6 +260,8 @@ const ContactForm: React.FC = () => {
               sx={textFieldStyles}
               value={formValues.message}
               onChange={handleChange}
+              error={formErrors.message}
+              helperText={helperText.message}
             />
 
             <button
