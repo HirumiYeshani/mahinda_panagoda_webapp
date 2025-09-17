@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Maximize2, X, ChevronLeft, ChevronRight } from "lucide-react";
 
-import arrowsvg from "../../assets/img/gallery/downarrow.png";
+
+import arrowsvg from "../../assets/img/gallery/arrow.svg";
 
 import img1 from "../../assets/img/gallery/img1.jpg";
 import img2 from "../../assets/img/gallery/img2.jpg";
@@ -84,19 +85,19 @@ const ImageCollection = () => {
   };
 
   return (
-    <div className="w-full mx-auto">
+    <div className="w-full mx-auto text-ternary">
       {/* Header */}
-      <div className="mb-10 text-center">
-        <h2 className="lg:text-[14px] text-sm font-[belda] text-ternary/70 mb-2 uppercase">
+      <div className="mb-6 text-center">
+        <h1 className="text-xs font-belda text-ternary/70 mb-2 uppercase tracking-wider">
           Captured Moments
-        </h2>
-        <h3 className="md:text-[36px] text-[25px] leading-[41px] sm:leading-[62px]  font-[belda] font-semibold">
+        </h1>
+        <h1 className="md:text-5xl text-3xl leading-[41px] sm:leading-[62px]  font-belda font-semibold">
           Image Collections
-        </h3>
+        </h1>
       </div>
 
       {/* Desktop & Tablet Image Grid */}
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-4 gap-4 h-auto">
+      <div className="hidden md:grid grid-cols-1 md:grid-cols-4 gap-7 h-auto">
         {/* Left image */}
         <div
           className="relative md:row-span-2 cursor-pointer"
@@ -107,13 +108,13 @@ const ImageCollection = () => {
             alt="Gallery"
             className="w-full h-full object-cover rounded-2xl grayscale-50"
           />
-          <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary pointer-events-none">
+          <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
             <Maximize2 size={18} />
           </button>
         </div>
 
         {/* Top-right two images */}
-        <div className="col-span-3 grid grid-cols-2 gap-4">
+        <div className="col-span-3 grid grid-cols-2 gap-7">
           {images.slice(1, 3).map((img, i) => (
             <div
               key={i}
@@ -123,11 +124,11 @@ const ImageCollection = () => {
               <img
                 src={img}
                 alt="Gallery"
-                className="w-full h-48 object-cover rounded-2xl grayscale-50"
+                className="w-full h-56 object-cover rounded-2xl grayscale-50"
               />
 
               {/* Expand button */}
-              <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary pointer-events-none">
+              <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
                 <Maximize2 size={18} />
               </button>
             </div>
@@ -135,7 +136,7 @@ const ImageCollection = () => {
         </div>
 
         {/* Middle three images */}
-        <div className="col-span-3 grid grid-cols-3 gap-4">
+        <div className="col-span-3 grid grid-cols-3 gap-7">
           {images.slice(3, 6).map((img, i) => (
             <div
               key={i}
@@ -145,9 +146,9 @@ const ImageCollection = () => {
               <img
                 src={img}
                 alt="Gallery"
-                className="w-full h-48 object-cover rounded-2xl grayscale-50"
+                className="w-full h-56 object-cover rounded-2xl grayscale-50"
               />
-              <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary pointer-events-none">
+              <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
                 <Maximize2 size={18} />
               </button>
             </div>
@@ -155,7 +156,7 @@ const ImageCollection = () => {
         </div>
 
         {/* Bottom three images */}
-        <div className="col-span-4 grid grid-cols-3 gap-4 relative">
+        <div className="col-span-4 grid grid-cols-3 gap-7 relative">
           {images.slice(6, 9).map((img, i) => (
             <div
               key={i}
@@ -165,9 +166,9 @@ const ImageCollection = () => {
               <img
                 src={img}
                 alt="Gallery"
-                className="w-full h-48 object-cover rounded-2xl grayscale-50"
+                className="w-full h-56 object-cover rounded-2xl grayscale-50"
               />
-              <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary pointer-events-none">
+              <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
                 <Maximize2 size={18} />
               </button>
             </div>
@@ -175,7 +176,7 @@ const ImageCollection = () => {
 
           {/* Fade overlay */}
           {extraRowsShown === 0 && (
-            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent rounded-b-2xl pointer-events-none"></div>
+            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent rounded-b-2xl"></div>
           )}
         </div>
 
@@ -189,25 +190,24 @@ const ImageCollection = () => {
             <img
               src={img}
               alt="Gallery"
-              className="w-full h-48 object-cover rounded-2xl grayscale-50"
+              className="w-full h-56 object-cover rounded-2xl grayscale-50"
             />
-            <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary pointer-events-none">
+            <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
               <Maximize2 size={18} />
             </button>
           </div>
         ))}
 
         {/* Show More / Show Less Buttons */}
-
         <div
-          className={`hidden md:flex justify-center gap-6 col-span-4 ${
-            extraRowsShown > 0 ? "mt-1" : "-translate-y-8"
+          className={`hidden md:flex justify-center gap-16 col-span-4 ${
+            extraRowsShown > 0 ? "mt-1 mb-6" : "-translate-y-8"
           }`}
         >
           {/* Show More button if there are still more images to reveal */}
           {totalVisibleImages < images.length && (
             <button
-              className="flex flex-col items-center group"
+              className="flex flex-col items-center group cursor-pointer"
               onClick={handleShowMore}
             >
               <div className="w-12 h-12 flex items-center justify-center">
@@ -217,14 +217,14 @@ const ImageCollection = () => {
                   className="w-8 h-8 transition-transform duration-300 transform rotate-0"
                 />
               </div>
-              <span className="text-black text-sm">Show More Images</span>
+              <span className="text-sm underline">Show More Images</span>
             </button>
           )}
 
           {/* Show Less button if any extra rows are shown */}
           {extraRowsShown > 0 && (
             <button
-              className="flex flex-col items-center group"
+              className="flex flex-col items-center group cursor-pointer"
               onClick={handleShowLess}
             >
               <div className="w-12 h-12 flex items-center justify-center">
@@ -234,7 +234,7 @@ const ImageCollection = () => {
                   className="w-8 h-8 transition-transform duration-300 transform rotate-180"
                 />
               </div>
-              <span className="text-black text-sm">Show Less Images</span>
+              <span className="text-sm underline">Show Less Images</span>
             </button>
           )}
         </div>
@@ -260,6 +260,7 @@ const ImageCollection = () => {
                   src={img}
                   alt="Gallery"
                   className="w-full h-40 object-cover rounded-xl grayscale-50"
+                  onClick={() => openModal(i + INITIAL_VISIBLE)}
                 />
 
                 {showOverlay && (
@@ -268,7 +269,7 @@ const ImageCollection = () => {
 
                 <button
                   onClick={() => openModal(i)}
-                  className="absolute top-2 right-2 p-1 backdrop-blur-sm rounded-lg border-2 border-primary text-primary"
+                  className="absolute top-2 right-2 p-1 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer"
                 >
                   <Maximize2 size={14} />
                 </button>
@@ -284,7 +285,7 @@ const ImageCollection = () => {
           {INITIAL_VISIBLE_MOBILE + extraRowsShown * IMAGES_PER_CLICK_MOBILE <
             images.length && (
             <button
-              className="flex flex-col items-center group"
+              className="flex flex-col items-center group cursor-pointer"
               onClick={() => setExtraRowsShown(extraRowsShown + 1)}
             >
               <div className="w-12 h-12 flex items-center justify-center">
@@ -294,14 +295,14 @@ const ImageCollection = () => {
                   className="w-8 h-8 transition-transform duration-300 transform rotate-0"
                 />
               </div>
-              <span className="text-black text-sm">Show More Images</span>
+              <span className="text-sm underline">Show More Images</span>
             </button>
           )}
 
           {/* Show Less */}
           {extraRowsShown > 0 && (
             <button
-              className="flex flex-col items-center group"
+              className="flex flex-col items-center group cursor-pointer"
               onClick={() => setExtraRowsShown(0)}
             >
               <div className="w-12 h-12 flex items-center justify-center">
@@ -311,7 +312,7 @@ const ImageCollection = () => {
                   className="w-8 h-8 transition-transform duration-300 transform rotate-180"
                 />
               </div>
-              <span className="text-black text-sm">Show Less Images</span>
+              <span className="text-sm underline">Show Less Images</span>
             </button>
           )}
         </div>
@@ -322,11 +323,11 @@ const ImageCollection = () => {
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
           <button
             onClick={closeModal}
-            className="absolute top-4 right-4 text-white"
+            className="absolute top-4 right-4 text-white cursor-pointer"
           >
             <X size={32} />
           </button>
-          <button onClick={prevImage} className="absolute left-4 text-white">
+          <button onClick={prevImage} className="absolute left-4 text-white cursor-pointer">
             <ChevronLeft size={40} />
           </button>
           <img
@@ -334,7 +335,7 @@ const ImageCollection = () => {
             alt="Gallery"
             className="max-h-[90%] max-w-[90%] rounded-lg shadow-lg"
           />
-          <button onClick={nextImage} className="absolute right-4 text-white">
+          <button onClick={nextImage} className="absolute right-4 text-white cursor-pointer">
             <ChevronRight size={40} />
           </button>
         </div>

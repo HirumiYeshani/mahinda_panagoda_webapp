@@ -197,12 +197,12 @@ const ContactForm: React.FC = () => {
       <div className="flex flex-col lg:flex-row lg:gap-10 ">
         <div className="lg:w-1/2">
           <div className="mb-6">
-            <h2 className="text-[18px] sm:text-[20px] font-[belda] text-ternary/70 mb-2">
+            <h1 className="lg:text-[18px] text-[20px] leading-[32px] font-[belda] text-ternary/70 mb-2">
               Have Questions?
-            </h2>
-            <h3 className="md:text-[36px] text-[25px] leading-[41px] sm:leading-[62px] font-[belda] font-semibold">
+            </h1>
+            <h1 className="md:text-5xl text-[25px] lg:leading-[41px] leading-[62px] font-[belda] font-semibold">
               We're Ready to Help.
-            </h3>
+            </h1>
           </div>
 
           {/* Contact Form */}

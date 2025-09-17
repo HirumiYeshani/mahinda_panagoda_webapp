@@ -1,5 +1,5 @@
 import React from 'react'
-import HeroImg from "../../assets/img/contactUs/hero.svg"
+import HeroImg from "../../assets/img/gallery/Frame 1.svg";
 
 const HeroSection:React.FC = () => {
   return (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import arrowsvg from "../../assets/img/gallery/downarrow.png";
+import arrowsvg from "../../assets/img/gallery/arrow.svg";
 
 const videos = [
   "https://www.youtube.com/embed/QpwpLjiCTO4?si=GSNHcFroMEx0FLMq",
@@ -41,78 +41,23 @@ const VideoCollection: React.FC = () => {
     setVisibleCountDesktop(INITIAL_COUNT_DESKTOP);
 
   return (
-    <div className="w-full mx-auto">
+    <div className="w-full mx-auto text-ternary">
       {/* Header */}
       <div className="mb-6 text-center">
-        <h2 className="lg:text-[14px] text-sm font-[belda] text-ternary/70 mb-2 uppercase">
+        <h1 className="text-xs font-belda text-ternary/70 mb-2 uppercase tracking-wider">
           Stories in motion
-        </h2>
-        <h3 className="md:text-[36px] text-[25px] leading-[41px] sm:leading-[62px] font-[belda] font-semibold">
+        </h1>
+        <h1 className="md:text-5xl text-3xl leading-[41px] sm:leading-[62px] font-belda font-semibold">
           Video Collections
-        </h3>
+        </h1>
       </div>
 
       {/* Desktop Video Grid */}
-      <div className="hidden md:grid grid-cols-3 gap-3 md:gap-7">
-        {videos.slice(0, visibleCountDesktop).map((video, i) => (
-          <div
-            key={i}
-            className="relative aspect-video w-full overflow-hidden rounded-lg cursor-pointer"
-            onClick={() => openPopup(video)}
-          >
-            <iframe
-              className="w-full h-full rounded-lg pointer-events-none"
-              src={video}
-              title={`YouTube video ${i + 1}`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        ))}
-      </div>
-
-      {/* Desktop Show More / Show Less Buttons */}
-      <div className="hidden md:flex justify-center gap-6 mt-6 -translate-y-5">
-        {visibleCountDesktop < videos.length && (
-          <button
-            className="flex flex-col items-center group"
-            onClick={handleShowMoreDesktop}
-          >
-            <div className="w-12 h-12 flex items-center justify-center">
-              <img
-                src={arrowsvg}
-                alt="Show more"
-                className="w-8 h-8 transition-transform duration-300 transform rotate-0"
-              />
-            </div>
-            <span className="text-black text-sm">Show More Videos</span>
-          </button>
-        )}
-        {visibleCountDesktop > INITIAL_COUNT_DESKTOP && (
-          <button
-            className="flex flex-col items-center group"
-            onClick={handleShowLessDesktop}
-          >
-            <div className="w-12 h-12 flex items-center justify-center">
-              <img
-                src={arrowsvg}
-                alt="Show less"
-                className="w-8 h-8 transition-transform duration-300 transform rotate-180"
-              />
-            </div>
-            <span className="text-black text-sm">Show Less Videos</span>
-          </button>
-        )}
-      </div>
-
-      {/* Mobile Video Grid */}
-      <div className="grid grid-cols-2 gap-3 md:hidden">
-        {videos.slice(0, visibleCountMobile).map((video, i) => {
-          // Add overlay only on last row when collapsed
-          const showOverlay =
-            extraRowsShownMobile === 0 &&
-            i >= INITIAL_COUNT_MOBILE - 2 &&
-            i < INITIAL_COUNT_MOBILE;
+      <div className="hidden md:grid grid-cols-3 gap-3 md:gap-7 relative">
+        {videos.slice(0, visibleCountDesktop).map((video, i) => {
+          const isCollapsed = visibleCountDesktop === INITIAL_COUNT_DESKTOP;
+          const lastRowStart = INITIAL_COUNT_DESKTOP - 3;
+          const showOverlay = isCollapsed && i >= lastRowStart;
 
           return (
             <div
@@ -129,7 +74,71 @@ const VideoCollection: React.FC = () => {
               ></iframe>
 
               {showOverlay && (
-                <div className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-white to-transparent rounded-b-lg"></div>
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white to-transparent rounded-b-lg pointer-events-none"></div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Desktop Show More / Show Less Buttons */}
+      <div className="hidden md:flex justify-center gap-16 mt-10 -translate-y-5">
+        {visibleCountDesktop < videos.length && (
+          <button
+            className="flex flex-col items-center group"
+            onClick={handleShowMoreDesktop}
+          >
+            <div className="w-12 h-12 flex items-center justify-center cursor-pointer">
+              <img
+                src={arrowsvg}
+                alt="Show more"
+                className="w-8 h-8 transition-transform duration-300 transform rotate-0"
+              />
+            </div>
+            <span className=" text-sm underline">Show More Videos</span>
+          </button>
+        )}
+        {visibleCountDesktop > INITIAL_COUNT_DESKTOP && (
+          <button
+            className="flex flex-col items-center group"
+            onClick={handleShowLessDesktop}
+          >
+            <div className="w-12 h-12 flex items-center justify-center cursor-pointer">
+              <img
+                src={arrowsvg}
+                alt="Show less"
+                className="w-8 h-8 transition-transform duration-300 transform rotate-180"
+              />
+            </div>
+            <span className=" text-sm underline">Show Less Videos</span>
+          </button>
+        )}
+      </div>
+
+      {/* Mobile Video Grid */}
+      <div className="grid grid-cols-2 gap-3 md:hidden">
+        {videos.slice(0, visibleCountMobile).map((video, i) => {
+          const showOverlay =
+            extraRowsShownMobile === 0 &&
+            i >= INITIAL_COUNT_MOBILE - 2 &&
+            i < INITIAL_COUNT_MOBILE;
+
+          return (
+            <div
+              key={i}
+              className="relative aspect-video w-full overflow-hidden rounded-lg cursor-pointer"
+              onClick={() => openPopup(video)}
+            >
+              <iframe
+                className="w-full h-full rounded-lg cursor-pointer"
+                src={video}
+                title={`YouTube video ${i + 1}`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+
+              {showOverlay && (
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white to-transparent rounded-b-lg"></div>
               )}
             </div>
           );
@@ -137,10 +146,10 @@ const VideoCollection: React.FC = () => {
       </div>
 
       {/* Mobile Show More / Show Less Buttons */}
-      <div className="md:hidden flex justify-center gap-6 mt-4">
+      <div className="md:hidden flex justify-center gap-7 mt-4">
         {visibleCountMobile < videos.length && (
           <button
-            className="flex flex-col items-center group"
+            className="flex flex-col items-center group cursor-pointer"
             onClick={() => setExtraRowsShownMobile(extraRowsShownMobile + 1)}
           >
             <div className="w-12 h-12 flex items-center justify-center">
@@ -150,12 +159,12 @@ const VideoCollection: React.FC = () => {
                 className="w-8 h-8 transition-transform duration-300 transform rotate-0"
               />
             </div>
-            <span className="text-black text-sm">Show More Videos</span>
+            <span className=" text-sm underline">Show More Videos</span>
           </button>
         )}
         {extraRowsShownMobile > 0 && (
           <button
-            className="flex flex-col items-center group"
+            className="flex flex-col items-center group cursor-pointer"
             onClick={() => setExtraRowsShownMobile(0)}
           >
             <div className="w-12 h-12 flex items-center justify-center">
@@ -165,7 +174,7 @@ const VideoCollection: React.FC = () => {
                 className="w-8 h-8 transition-transform duration-300 transform rotate-180"
               />
             </div>
-            <span className="text-black text-sm">Show Less Videos</span>
+            <span className="text-sm underline">Show Less Videos</span>
           </button>
         )}
       </div>
@@ -176,15 +185,13 @@ const VideoCollection: React.FC = () => {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
           onClick={closePopup}
         >
-          {/* Close button outside the video */}
           <button
-            className="absolute top-4 right-4 text-white text-3xl z-50"
+            className="absolute top-4 right-4 text-white text-3xl z-50 cursor-pointer"
             onClick={closePopup}
           >
             &times;
           </button>
 
-          {/* Video container */}
           <div
             className="relative w-11/12 md:w-3/4 lg:w-1/2 aspect-video"
             onClick={(e) => e.stopPropagation()}
