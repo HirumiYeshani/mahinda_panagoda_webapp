@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Maximize2, X, ChevronLeft, ChevronRight } from "lucide-react";
 
-
 import arrowsvg from "../../assets/img/gallery/arrow.svg";
 
 import img1 from "../../assets/img/gallery/img1.jpg";
@@ -108,7 +107,7 @@ const ImageCollection = () => {
             alt="Gallery"
             className="w-full h-full object-cover rounded-2xl grayscale-50"
           />
-          <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
+              <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
             <Maximize2 size={18} />
           </button>
         </div>
@@ -327,15 +326,22 @@ const ImageCollection = () => {
           >
             <X size={32} />
           </button>
-          <button onClick={prevImage} className="absolute left-4 text-white cursor-pointer">
+          <button
+            onClick={prevImage}
+            className="absolute left-4 text-white cursor-pointer"
+          >
             <ChevronLeft size={40} />
           </button>
           <img
             src={images[activeIndex]}
             alt="Gallery"
-            className="max-h-[90%] max-w-[90%] rounded-lg shadow-lg"
+
+            className="max-h-[90%] max-w-[90%] rounded-lg shadow-lg grayscale-50"
           />
-          <button onClick={nextImage} className="absolute right-4 text-white cursor-pointer">
+          <button
+            onClick={nextImage}
+            className="absolute right-4 text-white cursor-pointer"
+          >
             <ChevronRight size={40} />
           </button>
         </div>
