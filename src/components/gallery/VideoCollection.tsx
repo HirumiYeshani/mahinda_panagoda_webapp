@@ -47,7 +47,7 @@ const VideoCollection: React.FC = () => {
         <h1 className="text-xs font-belda text-ternary/70 mb-2 uppercase tracking-wider">
           Stories in motion
         </h1>
-        <h1 className="md:text-5xl text-3xl leading-[41px] sm:leading-[62px] font-belda font-semibold">
+        <h1 className="md:text-5xl text-3xl leading-[41px] md:leading-[62px] font-belda font-semibold">
           Video Collections
         </h1>
       </div>

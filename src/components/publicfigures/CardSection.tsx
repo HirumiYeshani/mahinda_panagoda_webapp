@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import frame from "../../assets/img/publicfigures/frame.png";
 import bg from "../../assets/img/publicfigures/back.png";
 import person1 from "../../assets/img/publicfigures/person1.jpg";
@@ -151,32 +151,40 @@ const PublicFigures = () => {
   const [selectedCard, setSelectedCard] = useState<Testimonial | null>(null);
 
   const [visibleCount, setVisibleCount] = useState(3 * 3);
-  const [overlayVisible, setOverlayVisible] = useState(true);
 
   const [mobileVisibleCount, setMobileVisibleCount] = useState(4);
   const [mobileOverlayVisible, setMobileOverlayVisible] = useState(true);
-
   const handleShowMoreDesktop = () => {
     if (visibleCount >= testimonials.length) {
       setVisibleCount(3 * 3);
-      setOverlayVisible(true);
     } else {
       setVisibleCount((prev) => Math.min(prev + 3, testimonials.length));
-      setOverlayVisible(false);
     }
   };
 
   const handleShowMoreMobile = () => {
     if (mobileVisibleCount >= testimonials.length) {
       setMobileVisibleCount(4);
-      setMobileOverlayVisible(true); 
+      setMobileOverlayVisible(true);
     } else {
       setMobileVisibleCount((prev) => Math.min(prev + 1, testimonials.length));
-      setMobileOverlayVisible(false); 
+      setMobileOverlayVisible(false);
     }
   };
   const isAllVisibleDesktop = visibleCount >= testimonials.length;
   const isAllVisibleMobile = mobileVisibleCount >= testimonials.length;
+
+  useEffect(() => {
+    if (selectedCard) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedCard]);
 
   return (
     <>
@@ -185,30 +193,30 @@ const PublicFigures = () => {
         <h1 className="text-sm font-belda text-ternary/70 mb-2 uppercase tracking-wider">
           Testimonials
         </h1>
-        <h1 className="md:text-5xl text-3xl leading-[41px] sm:leading-[62px] font-belda font-semibold">
+        <h1 className="md:text-5xl text-3xl leading-[41px] md:leading-[62px] font-belda font-semibold">
           Public Figures
         </h1>
       </div>
 
       {/* Desktop & Tablet Section */}
-      <div className="hidden sm:block">
-        <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full">
+      <div className="hidden md:block">
+        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
           {testimonials.slice(0, visibleCount).map((item, idx) => {
             const itemsPerRow = 3;
             const totalVisible = visibleCount;
             const startOfLastRow =
               totalVisible - (totalVisible % itemsPerRow || itemsPerRow);
-            const isLastRowItem = overlayVisible && idx >= startOfLastRow;
+            const isLastRowItem = !isAllVisibleDesktop && idx >= startOfLastRow;
 
             return (
               <div
                 key={item.id}
                 onClick={() => setSelectedCard(item)}
-                className={`rounded-xl flex flex-col items-center text-center relative overflow-hidden ${
+                className={`rounded-xl flex flex-col items-center text-center relative overflow-hidden cursor-pointer ${
                   isLastRowItem ? "" : ""
                 }`}
               >
-                <div className="w-full relative aspect-[5/4] md:aspect-[5/4] sm:aspect-[4/3] pt-1">
+                <div className="w-full relative md:aspect-[5/4] aspect-[4/3] pt-1">
                   {/* Background */}
                   <div
                     className="absolute inset-0 bg-cover bg-center opacity-40"
@@ -224,19 +232,22 @@ const PublicFigures = () => {
                   </button>
                   {/* Card */}
                   <div className="relative z-10 flex flex-col items-center h-full p-5">
+                    {/* Photo */}
                     <div className="relative w-50 h-60 mb-4 ">
                       <img
                         src={item.photo}
                         alt={item.name}
-                        className="w-[67%] h-[66%] object-cover rounded-full absolute grayscale-50 top-[12%] left-1/2 transform -translate-x-1/2"
+                        className="w-[67%] h-[66%] object-cover rounded-full absolute grayscale-50 top-8 left-1/2 transform -translate-x-1/2"
                       />
-                      <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none translate-y-17">
+                      {/* Flame */}
+                      <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none translate-y-15">
                         <Lottie
                           animationData={flame}
                           loop
-                          className="w-24 h-24"
+                          className="w-24 h-20"
                         />
                       </div>
+                      {/* Frame */}
                       <img
                         src={frame}
                         alt="frame"
@@ -247,10 +258,13 @@ const PublicFigures = () => {
                     <h3 className="text-xl">{item.name}</h3>
                     <p className="text-lg font-light mt-3 mb-5">{item.date}</p>
                   </div>
-
                   {/* Overlay */}
                   {isLastRowItem && (
-                    <div className="absolute bottom-0 left-0 w-full h-80 bg-gradient-to-t from-white to-transparent pointer-events-none z-40"></div>
+                    <div
+                      className={`absolute bottom-0 left-0 w-full ${
+                        visibleCount === 9 ? "h-80" : "h-55"
+                      } bg-gradient-to-t from-white to-transparent pointer-events-none z-40`}
+                    ></div>
                   )}
                 </div>
               </div>
@@ -277,7 +291,7 @@ const PublicFigures = () => {
       </div>
 
       {/* Mobile Section */}
-      <div className="sm:hidden">
+      <div className="md:hidden">
         <div className="grid grid-cols-1 gap-6 w-full">
           {testimonials.slice(0, mobileVisibleCount).map((item, idx) => {
             const isLastVisibleCardInitially =
@@ -306,19 +320,22 @@ const PublicFigures = () => {
 
                   {/* Card */}
                   <div className="relative z-10 flex flex-col items-center h-full p-5">
+                    {/* Photo */}
                     <div className="relative w-57 h-70 mb-4">
                       <img
                         src={item.photo}
                         alt={item.name}
-                        className="w-[67%] h-[66%] object-cover rounded-full absolute grayscale-50 top-[12%] left-1/2 transform -translate-x-1/2"
+                        className="w-[67%] h-[66%] object-cover rounded-full absolute grayscale-50 top-8 left-1/2 transform -translate-x-1/2"
                       />
+                      {/* Flame */}
                       <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none translate-y-17">
                         <Lottie
                           animationData={flame}
                           loop
-                          className="w-24 h-24"
+                          className="w-24 h-20"
                         />
                       </div>
+                      {/* Frame */}
                       <img
                         src={frame}
                         alt="frame"
@@ -360,9 +377,9 @@ const PublicFigures = () => {
 
       {/* Desktop / Tablet Modal */}
       {selectedCard && (
-        <div className="hidden sm:flex fixed inset-0 bg-black/50 items-center justify-center z-50">
+        <div className="hidden md:flex fixed inset-0 bg-black/50 items-center justify-center z-50">
           <div className="relative w-11/12 max-w-4xl rounded-xl overflow-hidden bg-white h-[480px]">
-            {/* Content wrapper */}
+            {/* Content */}
             <div className="relative z-10 p-6 flex flex-col md:flex-row gap-6">
               {/* Close button */}
               <button
@@ -373,25 +390,23 @@ const PublicFigures = () => {
               </button>
 
               {/* Left section */}
-              <div className="flex justify-center items-center w-full md:w-1/2 relative mt-10 h-[360px]">
+              <div className="flex justify-center items-center w-full md:w-1/2 relative mt-6 h-[390px]">
                 <div
                   className="absolute inset-0 bg-cover bg-center opacity-40 rounded-xl"
                   style={{ backgroundImage: `url(${bg})` }}
                 ></div>
-
+                {/* Photo */}
                 <div className="relative w-60 h-72">
                   <img
                     src={selectedCard.photo}
                     alt={selectedCard.name}
-                    className="w-[67%] h-[66%] object-cover rounded-full absolute top-[12%] left-1/2 transform -translate-x-1/2 grayscale-50"
+                    className="w-[67%] h-[66%] object-cover rounded-full absolute top-8 left-1/2 transform -translate-x-1/2 grayscale-50"
                   />
+                  {/* Flame */}
                   <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none translate-y-20">
-                    <Lottie
-                      animationData={flame}
-                      loop
-                      className="w-32 h-32"
-                    />
+                    <Lottie animationData={flame} loop className="w-32 h-32" />
                   </div>
+                  {/* Frame */}
                   <img
                     src={frame}
                     alt="frame"
@@ -402,7 +417,7 @@ const PublicFigures = () => {
 
               {/* Right section */}
               <div className="flex flex-col justify-center w-full md:w-1/2 text-left">
-                <h3 className="text-2xl mt-10">{selectedCard.name}</h3>
+                <h3 className="text-2xl">{selectedCard.name}</h3>
                 <p className="text-lg mt-6">
                   <span className="font-semibold">Birth Date:</span>{" "}
                   {selectedCard.birthDate}
@@ -412,8 +427,8 @@ const PublicFigures = () => {
                   {selectedCard.date}
                 </p>
                 <div className="mt-6">
-                  <h4 className="text-xl">Family Feedback</h4>
-                  <p className="leading-relaxed mt-6">
+                  <h4 className="text-xl font-semibold">Family Feedback</h4>
+                  <p className="leading-relaxed mt-2">
                     {selectedCard.feedback}
                   </p>
                 </div>
@@ -425,7 +440,7 @@ const PublicFigures = () => {
 
       {/* Mobile Modal */}
       {selectedCard && (
-        <div className="sm:hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div className="md:hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="relative w-11/12 max-w-md rounded-xl overflow-hidden bg-white max-h-[120vh]">
             {/* Close button */}
             <button
@@ -442,15 +457,13 @@ const PublicFigures = () => {
                 <img
                   src={selectedCard.photo}
                   alt={selectedCard.name}
-                  className="w-[70%] h-[65%] object-cover rounded-full absolute top-[12%] left-1/2 transform -translate-x-1/2 grayscale-50"
+                  className="w-[70%] h-[65%] object-cover rounded-full absolute top-8 left-1/2 transform -translate-x-1/2 grayscale-50"
                 />
+                {/* Flame */}
                 <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none translate-y-16">
-                  <Lottie
-                    animationData={flame}
-                    loop
-                    className="w-24 h-24"
-                  />
+                  <Lottie animationData={flame} loop className="w-24 h-24" />
                 </div>
+                {/* Frame */}
                 <img
                   src={frame}
                   alt="frame"
@@ -460,16 +473,16 @@ const PublicFigures = () => {
 
               {/* Right Section */}
               <h3 className="text-xl">{selectedCard.name}</h3>
-              <p className=" mt-4">
-                <span>Birth:</span> {selectedCard.birthDate}
+              <p className="mt-4">
+                <span className="font-semibold">Birth:</span> {selectedCard.birthDate}
               </p>
               <p className="mt-4">
-                <span>Death:</span> {selectedCard.date}
+                <span className="font-semibold">Death:</span> {selectedCard.date}
               </p>
 
               <div className="mt-4 text-center w-full">
-                <h4 className="text-lg">Family Feedback</h4>
-                <p className="leading-relaxed mt-4 mb-4">
+                <h4 className="text-lg font-semibold">Family Feedback</h4>
+                <p className="leading-relaxed text-justify p-2 mb-4">
                   {selectedCard.feedback}
                 </p>
               </div>
