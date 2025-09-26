@@ -10,7 +10,7 @@ const PublicFigure:React.FC = () => {
         <HeroSection/>
       </section>
 
-      <section className="md:w-5/6 mx-auto w-11/12 lg:mb-20 mb-20 ">
+      <section className="md:w-5/6 mx-auto w-11/12 lg:mb-30 mb-20 ">
         <PublicFigures/>
       </section>
 
