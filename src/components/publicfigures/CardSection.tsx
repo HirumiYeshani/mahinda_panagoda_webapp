@@ -46,25 +46,25 @@ const testimonials: Testimonial[] = [
     feedback:
       "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
   },
-  {
+    {
     id: 4,
     name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
     date: "27 September 2020",
-    photo: person1,
+    photo: person3,
     birthDate: "12 March 1950",
     feedback:
       "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
   },
-  {
+    {
     id: 5,
     name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
     date: "27 September 2020",
-    photo: person2,
+    photo: person3,
     birthDate: "12 March 1950",
     feedback:
       "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
   },
-  {
+    {
     id: 6,
     name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
     date: "27 September 2020",
@@ -73,25 +73,25 @@ const testimonials: Testimonial[] = [
     feedback:
       "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
   },
-  {
+    {
     id: 7,
     name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
     date: "27 September 2020",
-    photo: person1,
+    photo: person3,
     birthDate: "12 March 1950",
     feedback:
       "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
   },
-  {
+    {
     id: 8,
     name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
     date: "27 September 2020",
-    photo: person2,
+    photo: person3,
     birthDate: "12 March 1950",
     feedback:
       "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
   },
-  {
+    {
     id: 9,
     name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
     date: "27 September 2020",
@@ -100,16 +100,16 @@ const testimonials: Testimonial[] = [
     feedback:
       "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
   },
-  {
+    {
     id: 10,
     name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
     date: "27 September 2020",
-    photo: person2,
+    photo: person3,
     birthDate: "12 March 1950",
     feedback:
       "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
   },
-  {
+   {
     id: 11,
     name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
     date: "27 September 2020",
@@ -118,26 +118,17 @@ const testimonials: Testimonial[] = [
     feedback:
       "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
   },
-  {
+    {
     id: 12,
     name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
     date: "27 September 2020",
-    photo: person1,
+    photo: person3,
     birthDate: "12 March 1950",
     feedback:
       "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
   },
-  {
+    {
     id: 13,
-    name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
-    date: "27 September 2020",
-    photo: person2,
-    birthDate: "12 March 1950",
-    feedback:
-      "We are truly grateful for the compassionate and professional service provided during our most difficult time. The arrangements were handled with great care and dignity.",
-  },
-  {
-    id: 14,
     name: "Late Mr. Mahilal Senevirathne (Press Secretary of Hon. Sajith Premadasa)",
     date: "27 September 2020",
     photo: person3,
@@ -150,15 +141,20 @@ const testimonials: Testimonial[] = [
 const PublicFigures = () => {
   const [selectedCard, setSelectedCard] = useState<Testimonial | null>(null);
 
-  const [visibleCount, setVisibleCount] = useState(3 * 3);
+  const [visibleCount, setVisibleCount] = useState(
+    window.innerWidth >= 1024 ? 9 : 4
+  );
 
   const [mobileVisibleCount, setMobileVisibleCount] = useState(4);
   const [mobileOverlayVisible, setMobileOverlayVisible] = useState(true);
+
   const handleShowMoreDesktop = () => {
     if (visibleCount >= testimonials.length) {
-      setVisibleCount(3 * 3);
+      setVisibleCount(9);
     } else {
-      setVisibleCount((prev) => Math.min(prev + 3, testimonials.length));
+      setVisibleCount((prev) =>
+        Math.min(prev + 3, testimonials.length)
+      );
     }
   };
 
@@ -167,10 +163,11 @@ const PublicFigures = () => {
       setMobileVisibleCount(4);
       setMobileOverlayVisible(true);
     } else {
-      setMobileVisibleCount((prev) => Math.min(prev + 1, testimonials.length));
+      setMobileVisibleCount((prev) => Math.min(prev + 2, testimonials.length));
       setMobileOverlayVisible(false);
     }
   };
+
   const isAllVisibleDesktop = visibleCount >= testimonials.length;
   const isAllVisibleMobile = mobileVisibleCount >= testimonials.length;
 
@@ -198,9 +195,9 @@ const PublicFigures = () => {
         </h1>
       </div>
 
-      {/* Desktop & Tablet Section */}
-      <div className="hidden md:block">
-        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+      {/* DESKTOP */}
+      <div className="hidden lg:block">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
           {testimonials.slice(0, visibleCount).map((item, idx) => {
             const itemsPerRow = 3;
             const totalVisible = visibleCount;
@@ -212,96 +209,7 @@ const PublicFigures = () => {
               <div
                 key={item.id}
                 onClick={() => setSelectedCard(item)}
-                className={`rounded-xl flex flex-col items-center text-center relative overflow-hidden cursor-pointer ${
-                  isLastRowItem ? "" : ""
-                }`}
-              >
-                <div className="w-full relative md:aspect-[5/4] aspect-[4/3] pt-1">
-                  {/* Background */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center opacity-40"
-                    style={{ backgroundImage: `url(${bg})` }}
-                  ></div>
-
-                  {/* Maximize icon */}
-                  <button
-                    onClick={() => setSelectedCard(item)}
-                    className="absolute top-6 right-6 p-1.5 rounded-lg border-2 border-secondary text-secondary cursor-pointer z-50"
-                  >
-                    <Maximize2 size={18} />
-                  </button>
-                  {/* Card */}
-                  <div className="relative z-10 flex flex-col items-center h-full p-5">
-                    {/* Photo */}
-                    <div className="relative w-50 h-60 mb-4 ">
-                      <img
-                        src={item.photo}
-                        alt={item.name}
-                        className="w-[67%] h-[66%] object-cover rounded-full absolute grayscale-50 top-8 left-1/2 transform -translate-x-1/2"
-                      />
-                      {/* Flame */}
-                      <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none translate-y-15">
-                        <Lottie
-                          animationData={flame}
-                          loop
-                          className="w-24 h-20"
-                        />
-                      </div>
-                      {/* Frame */}
-                      <img
-                        src={frame}
-                        alt="frame"
-                        className="absolute inset-0 w-full h-full pointer-events-none z-30"
-                      />
-                    </div>
-
-                    <h3 className="text-xl">{item.name}</h3>
-                    <p className="text-lg font-light mt-3 mb-5">{item.date}</p>
-                  </div>
-                  {/* Overlay */}
-                  {isLastRowItem && (
-                    <div
-                      className={`absolute bottom-0 left-0 w-full ${
-                        visibleCount === 9 ? "h-80" : "h-55"
-                      } bg-gradient-to-t from-white to-transparent pointer-events-none z-40`}
-                    ></div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Show more / less buttons in Desktop */}
-        <div
-          onClick={handleShowMoreDesktop}
-          className="flex flex-col items-center cursor-pointer"
-        >
-          <img
-            src={arrow}
-            alt="arrow"
-            className={`w-10 h-10 transition-transform duration-300 ${
-              isAllVisibleDesktop ? "rotate-180" : ""
-            }`}
-          />
-          <span className="text-lg underline">
-            {isAllVisibleDesktop ? "Show Less Figures" : "Show More Figures"}
-          </span>
-        </div>
-      </div>
-
-      {/* Mobile Section */}
-      <div className="md:hidden">
-        <div className="grid grid-cols-1 gap-6 w-full">
-          {testimonials.slice(0, mobileVisibleCount).map((item, idx) => {
-            const isLastVisibleCardInitially =
-              mobileOverlayVisible && idx === mobileVisibleCount - 1;
-
-            return (
-              <div
-                key={item.id}
-                onClick={() => setSelectedCard(item)}
-                className="rounded-xl flex flex-col items-center text-center relative overflow-hidden"
+                className="rounded-xl flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
               >
                 <div className="w-full relative aspect-[5/4] pt-1">
                   {/* Background */}
@@ -320,31 +228,100 @@ const PublicFigures = () => {
 
                   {/* Card */}
                   <div className="relative z-10 flex flex-col items-center h-full p-5">
-                    {/* Photo */}
-                    <div className="relative w-57 h-70 mb-4">
+                    <div className="relative w-48 h-58 mb-4">
                       <img
                         src={item.photo}
                         alt={item.name}
-                        className="w-[67%] h-[66%] object-cover rounded-full absolute grayscale-50 top-8 left-1/2 transform -translate-x-1/2"
+                        className="w-[67%] h-[66%] object-cover rounded-full absolute grayscale-100 top-8 left-1/2 transform -translate-x-1/2"
                       />
-                      {/* Flame */}
-                      <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none translate-y-17">
-                        <Lottie
-                          animationData={flame}
-                          loop
-                          className="w-24 h-20"
-                        />
+                      <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none translate-y-14.5 -translate-0.5">
+                        <Lottie animationData={flame} loop className="w-24 h-16" />
                       </div>
-                      {/* Frame */}
                       <img
                         src={frame}
                         alt="frame"
                         className="absolute inset-0 w-full h-full pointer-events-none z-30"
                       />
                     </div>
-
                     <h3 className="text-xl">{item.name}</h3>
                     <p className="text-lg font-light mt-3 mb-5">{item.date}</p>
+                  </div>
+
+                  {/* Overlay */}
+                  {!isAllVisibleDesktop && isLastRowItem && (
+                    <div className="absolute bottom-0 left-0 w-full h-80 bg-gradient-to-t from-white to-transparent pointer-events-none z-40"></div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Show more / less */}
+        <div
+          onClick={handleShowMoreDesktop}
+          className="flex flex-col items-center cursor-pointer mt-6"
+        >
+          <img
+            src={arrow}
+            alt="arrow"
+            className={`w-10 h-10 transition-transform duration-300 ${
+              isAllVisibleDesktop ? "rotate-180" : ""
+            }`}
+          />
+          <span className="text-lg underline">
+            {isAllVisibleDesktop ? "Show Less Figures" : "Show More Figures"}
+          </span>
+        </div>
+      </div>
+
+      {/* MOBILE + TABLET */}
+      <div className="block lg:hidden">
+        <div className="grid grid-cols-2 gap-2 w-full">
+          {testimonials.slice(0, mobileVisibleCount).map((item, idx) => {
+            const isLastVisibleCardInitially =
+              mobileOverlayVisible && idx >= mobileVisibleCount - 2;
+
+            return (
+              <div
+                key={item.id}
+                onClick={() => setSelectedCard(item)}
+                className="rounded-xl flex flex-col items-center text-center relative overflow-hidden "
+              >
+                <div className="w-full relative aspect-[5/4] md:aspect-[6/6] pt-1">
+                  {/* Background */}
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-40"
+                    style={{ backgroundImage: `url(${bg})` }}
+                  ></div>
+
+                  {/* Maximize icon */}
+                  <button
+                    onClick={() => setSelectedCard(item)}
+                    className="absolute top-3 right-2 p-1.5 rounded-lg border-2 border-secondary text-secondary cursor-pointer z-50"
+                  >
+                    <Maximize2 size={14} />
+                  </button>
+
+                  {/* Card */}
+                  <div className="relative z-10 flex flex-col items-center h-full p-5">
+                    <div className="relative w-24 h-30 mb-4 md:w-38 md:h-48">
+                      <img
+                        src={item.photo}
+                        alt={item.name}
+                        className="w-[66%] h-[68%] object-cover rounded-full absolute grayscale-50 top-4 left-1/2 transform -translate-x-1/2"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none translate-y-7.5 -translate-x-[1%]">
+                        <Lottie animationData={flame} loop className="w-10 h-8" />
+                      </div>
+                      <img
+                        src={frame}
+                        alt="frame"
+                        className="absolute inset-0 w-full h-full pointer-events-none z-30"
+                      />
+                    </div>
+                    <h3 className="text-sm">{item.name}</h3>
+                    <p className="text-xs font-light mt-3 mb-5">{item.date}</p>
                   </div>
 
                   {/* Overlay */}
@@ -357,7 +334,7 @@ const PublicFigures = () => {
           })}
         </div>
 
-        {/* Show More / Less buttons for Mobile */}
+        {/* Show more / less */}
         <div
           onClick={handleShowMoreMobile}
           className="flex flex-col items-center cursor-pointer mt-6"
@@ -375,13 +352,11 @@ const PublicFigures = () => {
         </div>
       </div>
 
-      {/* Desktop / Tablet Modal */}
+      {/*  DESKTOP + TABLET MODAL ================= */}
       {selectedCard && (
         <div className="hidden md:flex fixed inset-0 bg-black/50 items-center justify-center z-50">
           <div className="relative w-11/12 max-w-4xl rounded-xl overflow-hidden bg-white h-[480px]">
-            {/* Content */}
             <div className="relative z-10 p-6 flex flex-col md:flex-row gap-6">
-              {/* Close button */}
               <button
                 onClick={() => setSelectedCard(null)}
                 className="absolute top-3 right-3 cursor-pointer text-2xl font-bold text-black"
@@ -389,24 +364,21 @@ const PublicFigures = () => {
                 ×
               </button>
 
-              {/* Left section */}
-              <div className="flex justify-center items-center w-full md:w-1/2 relative mt-6 h-[390px]">
+              {/* Left */}
+              <div className="flex justify-center items-center w-full md:w-1/2 relative mt-6 h-[390px] ">
                 <div
                   className="absolute inset-0 bg-cover bg-center opacity-40 rounded-xl"
                   style={{ backgroundImage: `url(${bg})` }}
                 ></div>
-                {/* Photo */}
                 <div className="relative w-60 h-72">
                   <img
                     src={selectedCard.photo}
                     alt={selectedCard.name}
                     className="w-[67%] h-[66%] object-cover rounded-full absolute top-8 left-1/2 transform -translate-x-1/2 grayscale-50"
                   />
-                  {/* Flame */}
-                  <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none translate-y-20">
-                    <Lottie animationData={flame} loop className="w-32 h-32" />
+                  <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none translate-y-17.5 -translate-0.5">
+                    <Lottie animationData={flame} loop className="w-20 h-18" />
                   </div>
-                  {/* Frame */}
                   <img
                     src={frame}
                     alt="frame"
@@ -415,7 +387,7 @@ const PublicFigures = () => {
                 </div>
               </div>
 
-              {/* Right section */}
+              {/* Right */}
               <div className="flex flex-col justify-center w-full md:w-1/2 text-left">
                 <h3 className="text-2xl">{selectedCard.name}</h3>
                 <p className="text-lg mt-6">
@@ -438,48 +410,41 @@ const PublicFigures = () => {
         </div>
       )}
 
-      {/* Mobile Modal */}
+      {/* ================= MOBILE MODAL ================= */}
       {selectedCard && (
         <div className="md:hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="relative w-11/12 max-w-md rounded-xl overflow-hidden bg-white max-h-[120vh]">
-            {/* Close button */}
             <button
               onClick={() => setSelectedCard(null)}
               className="absolute top-3 right-3 cursor-pointer text-2xl font-bold text-black z-50"
             >
               ×
             </button>
-
-            {/* Mobile Layout */}
             <div className="p-4 flex flex-col items-center text-center overflow-y-auto">
-              {/* Card Image */}
               <div className="relative w-52 h-60 mb-4 mt-4">
                 <img
                   src={selectedCard.photo}
                   alt={selectedCard.name}
                   className="w-[70%] h-[65%] object-cover rounded-full absolute top-8 left-1/2 transform -translate-x-1/2 grayscale-50"
                 />
-                {/* Flame */}
-                <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none translate-y-16">
-                  <Lottie animationData={flame} loop className="w-24 h-24" />
+                <div className="absolute inset-0 flex items-center justify-center z-50 pointer-events-none translate-y-15 -translate-0.5">
+                  <Lottie animationData={flame} loop className="w-16 h-16" />
                 </div>
-                {/* Frame */}
                 <img
                   src={frame}
                   alt="frame"
                   className="absolute inset-0 w-full h-full pointer-events-none z-30"
                 />
               </div>
-
-              {/* Right Section */}
               <h3 className="text-xl">{selectedCard.name}</h3>
               <p className="mt-4">
-                <span className="font-semibold">Birth:</span> {selectedCard.birthDate}
+                <span className="font-semibold">Birth:</span>{" "}
+                {selectedCard.birthDate}
               </p>
               <p className="mt-4">
-                <span className="font-semibold">Death:</span> {selectedCard.date}
+                <span className="font-semibold">Death:</span>{" "}
+                {selectedCard.date}
               </p>
-
               <div className="mt-4 text-center w-full">
                 <h4 className="text-lg font-semibold">Family Feedback</h4>
                 <p className="leading-relaxed text-justify p-2 mb-4">

@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../../assets/img/gallery/nav.svg";
 
 import hero from "../../assets/img/publicfigures/hero.svg";
 
@@ -7,9 +6,7 @@ const HeroSection: React.FC = () => {
   return (
     <div>
       <div className="relative  h-[300px]  lg:h-[500px]">
-        <div className="absolute top-0 left-0 w-full">
-          <img src={Navbar} className="w-full" />
-        </div>
+        <div className="absolute top-0 left-0 w-full"></div>
         <img
           src={hero}
           alt="Contact Hero"

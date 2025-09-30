@@ -98,7 +98,7 @@ const VideoCollection: React.FC = () => {
             <span className=" text-sm underline">Show More Videos</span>
           </button>
         )}
-        {visibleCountDesktop > INITIAL_COUNT_DESKTOP && (
+        {visibleCountDesktop >= videos.length && (
           <button
             className="flex flex-col items-center group"
             onClick={handleShowLessDesktop}
@@ -162,7 +162,7 @@ const VideoCollection: React.FC = () => {
             <span className=" text-sm underline">Show More Videos</span>
           </button>
         )}
-        {extraRowsShownMobile > 0 && (
+        {visibleCountMobile >= videos.length && (
           <button
             className="flex flex-col items-center group cursor-pointer"
             onClick={() => setExtraRowsShownMobile(0)}

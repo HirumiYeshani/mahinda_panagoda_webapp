@@ -2,10 +2,15 @@ import React from 'react'
 import HeroSection from '../components/gallery/HeroSection'
 import ImageCollection from '../components/gallery/ImageCollection'
 import VideoCollection from '../components/gallery/VideoCollection'
+import Navbar from '../components/common/Navbar'
+import Footer from '../components/common/Footer'
 
 const Gallery:React.FC = () => {
   return (
       <div className="font-[roboto]">
+        <section className="w-full">
+          <Navbar/>
+        </section>
       <section className="w-full lg:mb-30 mb-20">
         <HeroSection/>
       </section>
@@ -16,6 +21,11 @@ const Gallery:React.FC = () => {
 
          <section className="md:w-5/6 mx-auto w-11/12 lg:mb-30 mb-20 ">
         <VideoCollection/>
+      </section>
+
+      
+      <section className="w-full">
+       <Footer/>
       </section>
     </div>
   )

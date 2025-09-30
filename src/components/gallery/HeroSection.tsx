@@ -1,13 +1,11 @@
 import React from "react";
 import HeroImg from "../../assets/img/gallery/Frame 1.svg";
-import Navbar from "../../assets/img/gallery/nav.svg";
+
 const HeroSection: React.FC = () => {
   return (
     <div>
       <div className="relative  h-[300px]  lg:h-[500px]">
-                <div className="absolute top-0 left-0 w-full">
-          <img src ={Navbar} className="w-full"/>
-</div>
+        <div className="absolute top-0 left-0 w-full"></div>
         <img
           src={HeroImg}
           alt="Contact Hero"
@@ -17,9 +15,7 @@ const HeroSection: React.FC = () => {
           <div className="w-11/12 md:w-5/6 mx-auto py-4 space-y-2">
             <h1 className="text-2xl lg:text-5xl leading-[34px] lg:leading-[62px] font-bold font-belda text-white">
               Capturing Moments In{" "}
-              <span className=" text-primary">
-                Images & Motion
-              </span>
+              <span className=" text-primary">Images & Motion</span>
             </h1>
 
             <p className="text-[16px] lg:text-xl leading-5 lg:leading-6 text-white pb-2 sm:pb-4">
