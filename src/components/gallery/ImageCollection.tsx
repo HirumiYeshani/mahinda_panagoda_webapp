@@ -96,7 +96,7 @@ const ImageCollection = () => {
       </div>
 
       {/* Desktop & Tablet Image Grid */}
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-4 gap-7 h-auto">
+      <div className="hidden md:grid grid-cols-1 md:grid-cols-4 md:gap-6 lg:gap-7 h-auto">
         {/* Left image */}
         <div
           className="relative md:row-span-2 cursor-pointer"
@@ -107,7 +107,7 @@ const ImageCollection = () => {
             alt="Gallery"
             className="w-full h-full object-cover rounded-2xl grayscale-50"
           />
-              <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
+          <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
             <Maximize2 size={18} />
           </button>
         </div>
@@ -123,7 +123,7 @@ const ImageCollection = () => {
               <img
                 src={img}
                 alt="Gallery"
-                className="w-full h-56 object-cover rounded-2xl grayscale-50"
+                className="w-full md:h-32 lg:h-56 object-cover rounded-2xl grayscale-75"
               />
 
               {/* Expand button */}
@@ -145,7 +145,7 @@ const ImageCollection = () => {
               <img
                 src={img}
                 alt="Gallery"
-                className="w-full h-56 object-cover rounded-2xl grayscale-50"
+                className="w-full md:h-32 lg:h-56 object-cover rounded-2xl grayscale-75"
               />
               <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
                 <Maximize2 size={18} />
@@ -165,7 +165,7 @@ const ImageCollection = () => {
               <img
                 src={img}
                 alt="Gallery"
-                className="w-full h-56 object-cover rounded-2xl grayscale-50"
+                className="w-full h-40 md:h-32 lg:h-56 object-cover rounded-2xl grayscale-50"
               />
               <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
                 <Maximize2 size={18} />
@@ -189,7 +189,7 @@ const ImageCollection = () => {
             <img
               src={img}
               alt="Gallery"
-              className="w-full h-56 object-cover rounded-2xl grayscale-50"
+              className="w-full md: h-32 lg:h-56 object-cover rounded-2xl grayscale-50"
             />
             <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
               <Maximize2 size={18} />
@@ -221,7 +221,7 @@ const ImageCollection = () => {
           )}
 
           {/* Show Less button if any extra rows are shown */}
-          {extraRowsShown > 0 && (
+          {totalVisibleImages >= images.length && (
             <button
               className="flex flex-col items-center group cursor-pointer"
               onClick={handleShowLess}
@@ -299,7 +299,8 @@ const ImageCollection = () => {
           )}
 
           {/* Show Less */}
-          {extraRowsShown > 0 && (
+          {INITIAL_VISIBLE_MOBILE + extraRowsShown * IMAGES_PER_CLICK_MOBILE >=
+            images.length && (
             <button
               className="flex flex-col items-center group cursor-pointer"
               onClick={() => setExtraRowsShown(0)}
@@ -335,7 +336,6 @@ const ImageCollection = () => {
           <img
             src={images[activeIndex]}
             alt="Gallery"
-
             className="max-h-[90%] max-w-[90%] rounded-lg shadow-lg grayscale-50"
           />
           <button
