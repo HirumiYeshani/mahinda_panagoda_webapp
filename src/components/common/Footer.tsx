@@ -18,27 +18,47 @@ const Footer: React.FC = () => {
   ];
 
   const quickLinks = [
-    { name: "Home", href: "#" },
-    { name: "Packages", href: "#" },
-    { name: "Parlours", href: "#" },
-    { name: "Gallery", href: "#" },
-    { name: "Contact Us", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "Packages", href: "packages" },
+    { name: "Parlours", href: "parlours" },
+    { name: "Gallery", href: "gallery" },
+    { name: "Contact Us", href: "contactUs" },
   ];
 
   const contactInfo = [
-  { icon: <FiPhone className="w-4 h-4" />, text: " +94 71 1000 700" },
-  { icon: <FiMapPin className="w-6 h-6" />, text: "400 D, New Kandy Road, Talangama, Sri Lanka" },
-  { icon: <FiMail className="w-4 h-4" />, text: "mpanagoda2002@yahoo.com" },
-];
+    {
+      icon: <FiPhone className="w-4 h-4  text-white/75" />,
+      text: "+94 71 1000 700",
+      href: "tel:+94711000700",
+    },
+    {
+      icon: <FiMapPin className="lg:w-6 lg:h-6 w-4 h-4 text-white/75" />,
+      text: "400 D, New Kandy Road, Talangama, Sri Lanka",
+      href: "https://maps.google.com/?q=400+D,+New+Kandy+Road,+Talangama,+Sri+Lanka",
+    },
+    {
+      icon: <FiMail className="w-4 h-4 text-white/75" />,
+      text: "mpanagoda2002@yahoo.com",
+      href: "mailto:mpanagoda2002@yahoo.com",
+    },
+  ];
 
   const socialIcons = [
-    { src: instasvg, alt: "Instagram", link: "#" },
-    { src: fbsvg, alt: "Facebook", link: "#" },
-    { src: whatsAppsvg, alt: "WhatsApp", link: "#" },
+    { src: instasvg, alt: "Instagram", link: "https://instagram.com" },
+    {
+      src: fbsvg,
+      alt: "Facebook",
+      link: "https://www.facebook.com/people/Mahinda-Panagoda-Funeral-Directors/100065482210619/#",
+    },
+    {
+      src: whatsAppsvg,
+      alt: "WhatsApp",
+      link: "https://api.whatsapp.com/send/?phone=%2B94711000700&text&type=phone_number&app_absent=0",
+    },
   ];
   return (
     <>
-      <div className="flex flex-col items-center text-center space-y-4">
+      <div className="flex flex-col items-center text-center space-y- bg-transparent">
         <p className="text-2xl md:text-3xl font-semibold font-belda text-secondary">
           We Are Always Here When You Need Us
         </p>
@@ -47,13 +67,17 @@ const Footer: React.FC = () => {
           day or night. Our dedicated staff is always available to guide you,
           answer your questions, or offer compassionate support.
         </p>
-        <button className="px-12 py-3 text-lg bg-primary text-ternary rounded-lg mt-4 mb-6 cursor-pointer">
+        <button
+          onClick={() => (window.location.href = "tel:+94711000700")}
+          className="px-12 py-3 text-lg bg-primary hover:bg-primary/70 text-ternary rounded-lg mt-4 mb-6 cursor-pointer"
+        >
           Call Now
         </button>
       </div>
       <footer className="bg-gradient-to-b from-black to-ternary text-white">
         {/* Top Image */}
-        <div>
+
+        <div className="w-full h-auto">
           <img src={bg} alt="Footer" className="w-full" />
         </div>
 
@@ -79,7 +103,7 @@ const Footer: React.FC = () => {
             {/* Packages */}
             <div className="text-left lg:translate-x-28">
               <h3 className="text-xl font-semibold mb-3">Packages</h3>
-              <ul className="space-y-2 text-xl text-white/80">
+              <ul className="space-y-2 text-xl text-white/75">
                 {packagesLinks.map((link, index) => (
                   <li key={index}>
                     <a href={link.href} className="hover:text-white">
@@ -93,7 +117,7 @@ const Footer: React.FC = () => {
             {/* Quick Links */}
             <div className="text-left lg:mr-0 md:mr-18 translate-x-7">
               <h3 className="text-xl font-semibold mb-3">Quick Links</h3>
-              <ul className="space-y-2 text-xl text-white/80">
+              <ul className="space-y-2 text-xl text-white/75">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
                     <a href={link.href} className="hover:text-white">
@@ -105,17 +129,31 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Contact */}
-            <div className="text-left lg:mr-0 md:mr-22">
-              <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-              <div className="flex flex-col gap-4 items-start">
-                {contactInfo.map((item, idx) => (
-                  <div key={idx} className="flex items-center space-x-2">
-                      {item.icon} 
-                    <p className="text-white/80 text-xl">{item.text}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="flex space-x-6 mt-8 justify-start mb-2">
+            <div className="flex flex-col gap-2 items-start">
+                <h3 className="text-xl font-semibold mb-1">Contact Us</h3>
+              {contactInfo.map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : "_self"}
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2"
+                >
+                  {item.icon}
+                  <span
+                    className={`text-white/75 text-xl ${
+                      item.href.startsWith("mailto:")
+                        ? "underline underline-offset-1 decoration-white/75"
+                        : ""
+                    }`}
+                  >
+                    {item.text}
+                  </span>
+                </a>
+              ))}
+
+              {/* Social icons */}
+              <div className="flex space-x-6 mt-4 justify-start mb-2">
                 {socialIcons.map((icon, idx) => (
                   <a
                     key={idx}
@@ -155,7 +193,7 @@ const Footer: React.FC = () => {
             <div className="grid grid-cols-2 gap-20">
               <div className="text-left">
                 <h3 className="text-lg font-semibold mb-2">Packages</h3>
-                <ul className="space-y-1 text-base text-white/80">
+                <ul className="space-y-1 text-base text-white/75">
                   {packagesLinks.map((link, index) => (
                     <li key={index}>
                       <a href={link.href} className="hover:text-white">
@@ -167,7 +205,7 @@ const Footer: React.FC = () => {
               </div>
               <div className="text-left">
                 <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
-                <ul className="space-y-1 text-base text-white/80">
+                <ul className="space-y-1 text-base text-white/75">
                   {quickLinks.map((link, index) => (
                     <li key={index}>
                       <a href={link.href} className="hover:text-white">
@@ -182,14 +220,30 @@ const Footer: React.FC = () => {
             {/* Contact */}
             <div className="text-left">
               <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
+
               <div className="flex flex-col gap-3">
                 {contactInfo.map((item, idx) => (
-                  <div key={idx} className="flex items-center space-x-2">
-                      {item.icon}
-                    <p className="text-white/80 text-base">{item.text}</p>
-                  </div>
+                  <a
+                    key={idx}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : "_self"}
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2"
+                  >
+                    {item.icon}
+                    <span
+                      className={`text-white/75 text-base ${
+                        item.href.startsWith("mailto:")
+                          ? "underline underline-offset-1 decoration-white/75"
+                          : ""
+                      }`}
+                    >
+                      {item.text}
+                    </span>
+                  </a>
                 ))}
               </div>
+
               <div className="flex justify-center space-x-5 mt-8">
                 {socialIcons.map((icon, idx) => (
                   <a
@@ -216,7 +270,7 @@ const Footer: React.FC = () => {
             {/* Logo + Description */}
             <div className="sm:w-1/2 text-left">
               <img src={logo} alt="Logo" className="w-72 mb-4" />
-              <p className="text-base text-white/80 leading-6">
+              <p className="text-base text-white/75 leading-6 text-justify">
                 Mahinda Panagoda Funeral Directors was inaugurated in 2000 with
                 all Funeral services to cater the clients under one roof from
                 basic Funeral to VIP Funerals and Funeral Parlour with 24 hour
@@ -227,7 +281,7 @@ const Footer: React.FC = () => {
             {/* Packages */}
             <div className="sm:w-1/2 text-left translate-x-12 mt-4">
               <h3 className="text-lg font-semibold mb-3">Packages</h3>
-              <ul className="space-y-1 text-base text-white/80">
+              <ul className="space-y-1 text-base text-white/75">
                 {packagesLinks.map((link, index) => (
                   <li key={index}>
                     <a href={link.href} className="hover:text-white">
@@ -244,7 +298,7 @@ const Footer: React.FC = () => {
             {/* Quick Links */}
             <div className="sm:w-1/2 text-left">
               <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
-              <ul className="space-y-1 text-base text-white/80">
+              <ul className="space-y-1 text-base text-white/75">
                 {quickLinks.map((link, index) => (
                   <li key={index}>
                     <a href={link.href} className="hover:text-white">
@@ -260,10 +314,24 @@ const Footer: React.FC = () => {
               <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
               <div className="flex flex-col gap-3">
                 {contactInfo.map((item, i) => (
-                  <div key={i} className="flex items-center space-x-2">
-                      {item.icon}
-                    <p className="text-white/80 text-base">{item.text}</p>
-                  </div>
+                  <a
+                    key={i}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : "_self"}
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2"
+                  >
+                    {item.icon}
+                    <span
+                      className={`text-white/75 text-base ${
+                        item.href.startsWith("mailto:")
+                          ? "underline underline-offset-1 decoration-white/75"
+                          : ""
+                      }`}
+                    >
+                      {item.text}
+                    </span>
+                  </a>
                 ))}
               </div>
             </div>
@@ -286,8 +354,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="relative bg-gradient-to-b from-transparent to-secondary">
           {/* Top line */}
-  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-5/6 h-px bg-white"></div>
-
+          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-5/6 h-px bg-white"></div>
 
           {/* Main content */}
           <div className="w-5/6 mx-auto container flex flex-col sm:flex-col md:flex-row items-center justify-between py-4 text-xs text-white/80 space-y-2 md:space-y-0">
