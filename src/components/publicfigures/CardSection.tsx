@@ -302,7 +302,7 @@ const PublicFigures = () => {
             {/* Maximize icon */}
             <button
               onClick={() => setSelectedCard(item)}
-              className="absolute top-3 right-2 p-1.5 rounded-lg border-2 border-secondary text-secondary cursor-pointer z-50"
+              className="absolute top-3 right-2 p-1.5 rounded-lg border-2 border-secondary text-secondary cursor-pointer z-10"
             >
               <Maximize2 size={14} />
             </button>
