@@ -47,7 +47,7 @@ const VideoCollection: React.FC = () => {
         <h1 className="text-xs font-belda text-ternary/70 mb-2 uppercase tracking-wider">
           Stories in motion
         </h1>
-        <h1 className="md:text-5xl text-3xl leading-[41px] sm:leading-[62px] font-belda font-semibold">
+        <h1 className="md:text-5xl text-3xl leading-[41px] md:leading-[62px] font-belda font-semibold">
           Video Collections
         </h1>
       </div>
@@ -98,7 +98,7 @@ const VideoCollection: React.FC = () => {
             <span className=" text-sm underline">Show More Videos</span>
           </button>
         )}
-        {visibleCountDesktop > INITIAL_COUNT_DESKTOP && (
+        {visibleCountDesktop >= videos.length && (
           <button
             className="flex flex-col items-center group"
             onClick={handleShowLessDesktop}
@@ -162,7 +162,7 @@ const VideoCollection: React.FC = () => {
             <span className=" text-sm underline">Show More Videos</span>
           </button>
         )}
-        {extraRowsShownMobile > 0 && (
+        {visibleCountMobile >= videos.length && (
           <button
             className="flex flex-col items-center group cursor-pointer"
             onClick={() => setExtraRowsShownMobile(0)}

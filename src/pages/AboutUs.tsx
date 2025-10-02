@@ -1,13 +1,16 @@
 import React from "react";
+import Navbar from "../components/common/Navbar";
+import HeroSection from "../components/aboutus/HeroSection";
 
 const AboutUs: React.FC = () => {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">About Us Page</h1>
-      <p className="mt-4 text-lg">
-        Welcome to the About Us page. We are dedicated to providing the best
-        service possible.
-      </p>
+      <section className="w-full">
+        <Navbar/>
+      </section>
+       <section className="w-full lg:mb-30 mb-20">
+        <HeroSection/>
+      </section>
     </div>
   );
 };

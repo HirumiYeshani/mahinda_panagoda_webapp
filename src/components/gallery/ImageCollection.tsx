@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Maximize2, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 import arrowsvg from "../../assets/img/gallery/arrow.svg";
@@ -44,7 +44,43 @@ const images = [
   img2,
   img3,
   img4,
+  img1,
+  img2,
+  img3,
+  img4,
   img5,
+  img6,
+  img7,
+  img8,
+  img9,
+  img6,
+  img7,
+  img8,
+  img7,
+  img8,
+  img6,
+  img7,
+  img8,
+  img6,
+  img8,
+  img6,
+  img7,
+  img8,
+  img6,
+  img8,
+  img7,
+  img8,
+  img6,
+  img8,
+  img6,
+  img7,
+  img8,
+  img6,
+  img8,
+  img8,
+  img8,
+  img8,
+  img7,
 ];
 
 const ImageCollection = () => {
@@ -65,23 +101,33 @@ const ImageCollection = () => {
     }
   };
   const INITIAL_VISIBLE = 9;
-  const IMAGES_PER_ROW_DESKTOP = 4;
-  const EXTRA_ROWS_INCREMENT = 2;
+
   const INITIAL_VISIBLE_MOBILE = 6;
   const IMAGES_PER_CLICK_MOBILE = 6;
 
   const [extraRowsShown, setExtraRowsShown] = useState(0);
 
+  const IMAGES_PER_EXTRA_GRID = 9; // 1 big + 2 top + 3 middle + 3 bottom
   const totalVisibleImages =
-    INITIAL_VISIBLE + extraRowsShown * IMAGES_PER_ROW_DESKTOP;
+    INITIAL_VISIBLE + extraRowsShown * IMAGES_PER_EXTRA_GRID;
 
   const handleShowMore = () => {
-    setExtraRowsShown((prev) => prev + EXTRA_ROWS_INCREMENT);
+    setExtraRowsShown((prev) => prev + 1);
   };
 
-  const handleShowLess = () => {
-    setExtraRowsShown(0);
-  };
+  const handleShowLess = () => setExtraRowsShown(0);
+
+  useEffect(() => {
+    if (activeIndex !== null) {
+      document.body.style.overflow = "hidden"; // stop scrolling when modal is open
+    } else {
+      document.body.style.overflow = "auto"; // restore scrolling when modal closes
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // cleanup on unmount
+    };
+  }, [activeIndex]);
 
   return (
     <div className="w-full mx-auto text-ternary">
@@ -90,13 +136,13 @@ const ImageCollection = () => {
         <h1 className="text-xs font-belda text-ternary/70 mb-2 uppercase tracking-wider">
           Captured Moments
         </h1>
-        <h1 className="md:text-5xl text-3xl leading-[41px] sm:leading-[62px]  font-belda font-semibold">
+        <h1 className="md:text-5xl text-3xl leading-[41px] md:leading-[62px]  font-belda font-semibold">
           Image Collections
         </h1>
       </div>
 
       {/* Desktop & Tablet Image Grid */}
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-4 gap-7 h-auto">
+      <div className="hidden md:grid grid-cols-1 md:grid-cols-4 md:gap-6 lg:gap-7 h-auto">
         {/* Left image */}
         <div
           className="relative md:row-span-2 cursor-pointer"
@@ -107,7 +153,7 @@ const ImageCollection = () => {
             alt="Gallery"
             className="w-full h-full object-cover rounded-2xl grayscale-50"
           />
-              <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
+          <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
             <Maximize2 size={18} />
           </button>
         </div>
@@ -123,7 +169,7 @@ const ImageCollection = () => {
               <img
                 src={img}
                 alt="Gallery"
-                className="w-full h-56 object-cover rounded-2xl grayscale-50"
+                className="w-full md:h-32 lg:h-56 object-cover rounded-2xl grayscale-75"
               />
 
               {/* Expand button */}
@@ -145,7 +191,7 @@ const ImageCollection = () => {
               <img
                 src={img}
                 alt="Gallery"
-                className="w-full h-56 object-cover rounded-2xl grayscale-50"
+                className="w-full md:h-32 lg:h-56 object-cover rounded-2xl grayscale-75"
               />
               <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
                 <Maximize2 size={18} />
@@ -165,7 +211,7 @@ const ImageCollection = () => {
               <img
                 src={img}
                 alt="Gallery"
-                className="w-full h-56 object-cover rounded-2xl grayscale-50"
+                className="w-full h-40 md:h-32 lg:h-56 object-cover rounded-2xl grayscale-50"
               />
               <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
                 <Maximize2 size={18} />
@@ -173,29 +219,108 @@ const ImageCollection = () => {
             </div>
           ))}
 
-          {/* Fade overlay */}
-          {extraRowsShown === 0 && (
+          {extraRowsShown === 0 && totalVisibleImages < images.length && (
             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent rounded-b-2xl"></div>
           )}
         </div>
 
-        {/* Extra images */}
-        {images.slice(INITIAL_VISIBLE, totalVisibleImages).map((img, i) => (
-          <div
-            key={i}
-            className="relative col-span-2 md:col-span-1 cursor-pointer"
-            onClick={() => openModal(i + INITIAL_VISIBLE)}
-          >
-            <img
-              src={img}
-              alt="Gallery"
-              className="w-full h-56 object-cover rounded-2xl grayscale-50"
-            />
-            <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
-              <Maximize2 size={18} />
-            </button>
-          </div>
-        ))}
+        {/* Extra Images */}
+        {extraRowsShown > 0 &&
+          Array.from({ length: extraRowsShown }).map((_, rowIndex) => {
+            const start = INITIAL_VISIBLE + rowIndex * IMAGES_PER_EXTRA_GRID;
+            const end = start + IMAGES_PER_EXTRA_GRID;
+            const chunk = images.slice(start, end);
+
+            return (
+              <div
+                key={rowIndex}
+                className="col-span-4 grid grid-cols-1 md:grid-cols-4 md:gap-6 lg:gap-7 h-auto"
+              >
+                {/* Big left image */}
+                {chunk[0] && (
+                  <div
+                    className="relative md:row-span-2 cursor-pointer"
+                    onClick={() => openModal(start)}
+                  >
+                    <img
+                      src={chunk[0]}
+                      alt="Gallery"
+                      className="w-full lg:h-[476px] h-[282px] object-cover rounded-2xl grayscale-50"
+                    />
+                    <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
+                      <Maximize2 size={18} />
+                    </button>
+                  </div>
+                )}
+
+                {/* Top-right two images */}
+                <div className="col-span-3 grid grid-cols-2 gap-7">
+                  {chunk.slice(1, 3).map((img, i) => (
+                    <div
+                      key={i}
+                      className="relative cursor-pointer"
+                      onClick={() => openModal(start + i + 1)}
+                    >
+                      <img
+                        src={img}
+                        alt="Gallery"
+                        className="w-full md:h-32 lg:h-56 object-cover rounded-2xl grayscale-75"
+                      />
+                      <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
+                        <Maximize2 size={18} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Middle three images */}
+                <div className="col-span-3 grid grid-cols-3 gap-7">
+                  {chunk.slice(3, 6).map((img, i) => (
+                    <div
+                      key={i}
+                      className="relative cursor-pointer"
+                      onClick={() => openModal(start + i + 3)}
+                    >
+                      <img
+                        src={img}
+                        alt="Gallery"
+                        className="w-full md:h-32 lg:h-56 object-cover rounded-2xl grayscale-75"
+                      />
+                      <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
+                        <Maximize2 size={18} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Bottom three images */}
+                <div className="col-span-4 grid grid-cols-3 gap-7 relative">
+                  {chunk.slice(6, 9).map((img, i) => (
+                    <div
+                      key={i}
+                      className="relative cursor-pointer"
+                      onClick={() => openModal(start + i + 6)}
+                    >
+                      <img
+                        src={img}
+                        alt="Gallery"
+                        className="w-full h-40 md:h-32 lg:h-56 object-cover rounded-2xl grayscale-50"
+                      />
+                      <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
+                        <Maximize2 size={18} />
+                      </button>
+                    </div>
+                  ))}
+
+                  {/* Always show overlay on last visible row */}
+                  {(totalVisibleImages < images.length || extraRowsShown > 0) &&
+                    rowIndex === extraRowsShown - 1 && (
+                      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent rounded-b-2xl"></div>
+                    )}
+                </div>
+              </div>
+            );
+          })}
 
         {/* Show More / Show Less Buttons */}
         <div
@@ -221,7 +346,7 @@ const ImageCollection = () => {
           )}
 
           {/* Show Less button if any extra rows are shown */}
-          {extraRowsShown > 0 && (
+          {totalVisibleImages >= images.length && (
             <button
               className="flex flex-col items-center group cursor-pointer"
               onClick={handleShowLess}
@@ -246,12 +371,14 @@ const ImageCollection = () => {
             0,
             INITIAL_VISIBLE_MOBILE + extraRowsShown * IMAGES_PER_CLICK_MOBILE
           )
-          .map((img, i) => {
-            // Show overlay only on last row when collapsed
-            const showOverlay =
-              extraRowsShown === 0 &&
-              i >= INITIAL_VISIBLE_MOBILE - 2 &&
-              i < INITIAL_VISIBLE_MOBILE;
+          .map((img, i, arr) => {
+            // Calculate which images are in the last row
+            const totalVisible = arr.length;
+            const imagesInLastRow =
+              totalVisible % 2 === 0 ? 2 : totalVisible % 2;
+            const startIndexLastRow = totalVisible - imagesInLastRow;
+
+            const showOverlay = i >= startIndexLastRow;
 
             return (
               <div key={i} className="relative">
@@ -299,7 +426,8 @@ const ImageCollection = () => {
           )}
 
           {/* Show Less */}
-          {extraRowsShown > 0 && (
+          {INITIAL_VISIBLE_MOBILE + extraRowsShown * IMAGES_PER_CLICK_MOBILE >=
+            images.length && (
             <button
               className="flex flex-col items-center group cursor-pointer"
               onClick={() => setExtraRowsShown(0)}
@@ -335,7 +463,6 @@ const ImageCollection = () => {
           <img
             src={images[activeIndex]}
             alt="Gallery"
-
             className="max-h-[90%] max-w-[90%] rounded-lg shadow-lg grayscale-50"
           />
           <button
