@@ -59,10 +59,10 @@ const Footer: React.FC = () => {
   return (
     <>
       <div className="flex flex-col items-center text-center space-y- bg-transparent">
-        <p className="text-xl md:text-3xl font-semibold font-belda text-secondary">
+        <p className="w-2/3 text-xl  md:text-3xl   font-semibold font-belda text-secondary">
           We Are Always Here When You Need Us
         </p>
-        <p className="w-2/3 md:text-xl text-base text- font-light px-4 mt-4">
+        <p className="w-5/6 md:text-xl text-base text- font-light px-4 mt-4">
           We provide 24/7 assistance, ensuring you can reach us any time of the
           day or night. Our dedicated staff is always available to guide you,
           answer your questions, or offer compassionate support.
