@@ -59,10 +59,10 @@ const Footer: React.FC = () => {
   return (
     <>
       <div className="flex flex-col items-center text-center space-y- bg-transparent">
-        <p className="text-xl md:text-2xl font-semibold font-belda text-secondary">
+        <p className="text-xl md:text-3xl font-semibold font-belda text-secondary">
           We Are Always Here When You Need Us
         </p>
-        <p className="max-w-4xl md:text-lg text-base text- font-light px-4 mt-3">
+        <p className="w-2/3 md:text-xl text-base text- font-light px-4 mt-4">
           We provide 24/7 assistance, ensuring you can reach us any time of the
           day or night. Our dedicated staff is always available to guide you,
           answer your questions, or offer compassionate support.
@@ -82,17 +82,17 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="container py-12 w-5/6 mx-auto">
+        <div className="container py-12 md:w-5/6 mx-auto w-11/12">
           {/* Desktop Layout */}
           <div className="hidden lg:grid lg:grid-cols-4 gap-8 justify-items-center">
             {/* Logo & Description */}
-            <div className="text-left lg:w-[330px] -translate-y-5 translate-x-5">
+            <div className="text-left lg:w-[330px] -translate-y-5 translate-x-1">
               <img
                 src={logo}
                 alt="Logo"
                 className="mx-auto object-contain w-full "
               />
-              <p className="text-lg text-white font-light leading-[26px] lg:text-justify text-justify px-4 lg:px-0">
+              <p className="text-lg text-white font-light leading-[26px] lg:text-justify text-justify px-4 lg:px-0 ">
                 Mahinda Panagoda Funeral Directors was inaugurated in 2000 with
                 all Funeral services to cater the clients under one roof from
                 basic Funeral to VIP Funerals and Funeral Parlour with 24 hour
@@ -181,7 +181,7 @@ const Footer: React.FC = () => {
                 alt="Logo"
                 className="object-contain w-[300px] mb-4"
               />
-              <p className="text-base text-white font-light leading-6 text-left">
+              <p className="text-base text-white font-light leading-6 text-justify">
                 Mahinda Panagoda Funeral Directors was inaugurated in 2000 with
                 all Funeral services to cater the clients under one roof from
                 basic Funeral to VIP Funerals and Funeral Parlour with 24 hour
@@ -264,7 +264,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         {/* Tablet Layout */}
-        <div className="hidden md:flex lg:hidden w-5/6 mx-auto flex-col px-8  space-y-10 -translate-y-12 ">
+        <div className="hidden md:flex lg:hidden w-5/6 mx-auto flex-col space-y-10 -translate-y-12 ">
           {/* Row 1: Logo + Content | Quick Links */}
           <div className="flex flex-col sm:flex-row gap-10">
             {/* Logo + Description */}
@@ -352,9 +352,9 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="relative bg-gradient-to-b from-transparent to-secondary">
+        <div className="relative bg-gradient-to-b from-transparent to-secondary  ">
           {/* Top line */}
-          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-5/6 h-px bg-white"></div>
+          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 md:w-5/6 w-11/12 mx-auto h-px bg-white"></div>
 
           {/* Main content */}
           <div className="w-5/6 mx-auto container flex flex-col sm:flex-col md:flex-row items-center justify-between py-4 text-xs text-white/80 space-y-2 md:space-y-0">
@@ -364,12 +364,12 @@ const Footer: React.FC = () => {
               <img
                 src={AIOHlogo}
                 alt="Logo"
-                className="w-11 h-auto inline-block align-middle lg:-translate-x-3 -translate-x-1 lg:translate-y-0 -translate-y-[11%]"
+                className="w-11 h-auto inline-block align-middle lg:-translate-x-3 -translate-x-1 -lg:translate-y-1 -translate-y-[11%]"
               />
             </div>
 
             {/* Right content */}
-            <div className="flex items-center lg:space-x-8 space-x-10 text-xs translate-x-0.5 mt-4">
+            <div className="flex items-center lg:space-x-8 space-x-2 text-xs translate-x-0.5 mt-1">
               <a href="#" className="hover:underline">
                 Privacy Policy
               </a>
