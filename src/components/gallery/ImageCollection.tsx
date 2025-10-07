@@ -155,7 +155,7 @@ const ImageCollection = () => {
           <img
             src={images[0]}
             alt="Gallery"
-            className="w-full h-full object-cover rounded-2xl grayscale-50"
+            className="w-full h-full object-cover rounded-2xl grayscale-75"
           />
           <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
             <Maximize2 size={18} />
@@ -215,7 +215,7 @@ const ImageCollection = () => {
               <img
                 src={img}
                 alt="Gallery"
-                className="w-full h-40 md:h-32 lg:h-56 object-cover rounded-2xl grayscale-50"
+                className="w-full h-40 md:h-32 lg:h-56 object-cover rounded-2xl grayscale-75"
               />
               <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
                 <Maximize2 size={18} />
@@ -249,7 +249,7 @@ const ImageCollection = () => {
                     <img
                       src={chunk[0]}
                       alt="Gallery"
-                      className="w-full lg:h-[476px] h-[282px] object-cover rounded-2xl grayscale-50"
+                      className="w-full lg:h-[476px] h-[282px] object-cover rounded-2xl grayscale-75"
                     />
                     <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
                       <Maximize2 size={18} />
@@ -308,7 +308,7 @@ const ImageCollection = () => {
                       <img
                         src={img}
                         alt="Gallery"
-                        className="w-full h-40 md:h-32 lg:h-56 object-cover rounded-2xl grayscale-50"
+                        className="w-full h-40 md:h-32 lg:h-56 object-cover rounded-2xl grayscale-75"
                       />
                       <button className="absolute top-2 right-2 p-1.5 backdrop-blur-sm rounded-lg border-2 border-primary text-primary cursor-pointer">
                         <Maximize2 size={18} />
@@ -389,7 +389,7 @@ const ImageCollection = () => {
                 <img
                   src={img}
                   alt="Gallery"
-                  className="w-full h-40 object-cover rounded-xl grayscale-50"
+                  className="w-full h-40 object-cover rounded-xl grayscale-75"
                   onClick={() => openModal(i + INITIAL_VISIBLE)}
                 />
 

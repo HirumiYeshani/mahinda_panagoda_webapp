@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { X } from "lucide-react";
-
+import { RiMenu3Fill } from "react-icons/ri";
 import logo from "../../assets/img/navbar/logo.svg";
 import sublogo from "../../assets/img/navbar/sublogo.svg";
 
@@ -17,10 +17,25 @@ const navLinks = [
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      // Lock scroll
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
+    } else {
+      // Restore scroll
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+    }
+  }, [isOpen]);
+
   return (
-    <nav className="absolute top-0 left-0 w-full bg-gradient-to-b from-black to-black/5 text-white py-12 pt-3 z-20">
+    <nav className="absolute top-0 left-0 w-full  text-white py-12 pt-3 z-20 ">
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black [via-black/50] to-transparent pointer-events-none"></div>
+
       <div className="w-5/6 mx-auto flex items-center justify-between px-2 md:px-14 lg:px-10">
-       
         {/* Logo */}
         <div className="flex items-center pt-2 lg:pt-0 -translate-x-10">
           <NavLink to="/">
@@ -40,7 +55,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex space-x-10 font-semibold text-lg">
+        <div className="hidden lg:flex space-x-10 font-light text-lg">
           {navLinks.map((link) => (
             <NavLink
               key={link.name}
@@ -48,8 +63,8 @@ const Navbar: React.FC = () => {
               className={({ isActive }) =>
                 `relative inline-block pb-1 ${
                   isActive
-                    ? "after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-[50%] after:border-2 after:h-[2px] after:bg-white"
-                    : "hover:after:content-[''] hover:after:absolute hover:after:left-0 hover:after:bottom-0 hover:after:border-2 hover:after:w-[50%] hover:after:h-[2px] hover:after:bg-white"
+                    ? "after:content-[''] after:absolute  after:left-0 after:bottom-0 after:w-[50%] after:border-2 after:h-[2px] after:bg-white"
+                    : "hover:after:content-['']  hover:after:absolute hover:after:left-0 hover:after:bottom-0 hover:after:border-2 hover:after:w-[50%] hover:after:h-[2px] hover:after:bg-white"
                 }`
               }
             >
@@ -62,12 +77,12 @@ const Navbar: React.FC = () => {
         <div className="hidden lg:flex space-x-8 translate-x-12 ">
           <button
             onClick={() => (window.location.href = "tel:+94711000700")}
-            className="px-4 py-3 bg-primary hover:bg-primary/70 text-black font-bold rounded-lg text-lg cursor-pointer"
+            className="px-4 py-2.5 bg-primary hover:bg-primary/70 text-black font-semibold rounded-lg text-lg cursor-pointer"
           >
             +94 71 1000 700
           </button>
 
-          <button className="px-7 py-2 border-2 border-white rounded-lg text-lg cursor-pointer">
+          <button className="px-7 py-2.5 border-2 border-white rounded-lg text-lg cursor-pointer">
             Login
           </button>
         </div>
@@ -76,11 +91,9 @@ const Navbar: React.FC = () => {
         <div className="lg:hidden flex items-center translate-x-6 md:translate-x-16">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex flex-col justify-between w-8 h-6"
+            className="text-white text-2xl"
           >
-            <span className="block h-1 w-full bg-white rounded"></span>
-            <span className="block h-1 w-full bg-white rounded"></span>
-            <span className="block h-1 w-full bg-white rounded"></span>
+            <RiMenu3Fill />
           </button>
         </div>
       </div>
@@ -92,6 +105,18 @@ const Navbar: React.FC = () => {
           <div className="flex justify-end p-6">
             <button onClick={() => setIsOpen(false)}>
               <X size={28} className="text-white" />
+            </button>
+          </div>
+          {/* Buttons */}
+          <div className="flex flex-row space-x-6 mt-6 ml-6 w-full">
+            <button
+              onClick={() => (window.location.href = "tel:+94711000700")}
+              className="px-6 py-3 w-fit bg-primary hover:bg-primary/70 text-black font-bold rounded-lg text-lg cursor-pointer"
+            >
+              +94 71 1000 700
+            </button>
+            <button className="px-16 py-3 w-fit border-2 border-white rounded-lg text-lg cursor-pointer ">
+              Login
             </button>
           </div>
 
@@ -115,19 +140,6 @@ const Navbar: React.FC = () => {
                 </NavLink>
               </div>
             ))}
-
-            {/* Buttons */}
-            <div className="flex flex-row space-x-12 mt-6 ml-6">
-              <button
-                onClick={() => (window.location.href = "tel:+94711000700")}
-                className="px-6 py-3 w-fit bg-primary hover:bg-primary/70 text-black font-bold rounded-lg text-lg cursor-pointer"
-              >
-                +94 71 1000 700
-              </button>
-              <button className="px-10 py-3 w-fit border-2 border-white rounded-lg text-lg cursor-pointer ">
-                Login
-              </button>
-            </div>
           </div>
         </div>
       )}

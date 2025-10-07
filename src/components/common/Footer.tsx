@@ -62,10 +62,14 @@ const Footer: React.FC = () => {
         <p className="w-2/3 text-xl  md:text-3xl   font-semibold font-belda text-secondary">
           We Are Always Here When You Need Us
         </p>
-        <p className="w-5/6 md:text-xl text-base text- font-light px-4 mt-4">
+        <p className="hidden md:block w-5/6 md:text-xl text-base text- font-light px-4 mt-4">
           We provide 24/7 assistance, ensuring you can reach us any time of the
           day or night. Our dedicated staff is always available to guide you,
           answer your questions, or offer compassionate support.
+        </p>
+         <p className="block md:hidden w-5/6 md:text-xl text-base text- font-light px-4 mt-4">
+          We provide 24/7 assistance, ensuring you can reach us any time of the
+          day or night. 
         </p>
         <button
           onClick={() => (window.location.href = "tel:+94711000700")}
@@ -221,7 +225,7 @@ const Footer: React.FC = () => {
             <div className="text-left">
               <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
 
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
                 {contactInfo.map((item, idx) => (
                   <a
                     key={idx}
@@ -312,7 +316,7 @@ const Footer: React.FC = () => {
             {/* Contact Info */}
             <div className="sm:w-1/2 text-left pl-16">
               <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1">
                 {contactInfo.map((item, i) => (
                   <a
                     key={i}
