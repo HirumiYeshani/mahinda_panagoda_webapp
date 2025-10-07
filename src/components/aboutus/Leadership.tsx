@@ -1,6 +1,5 @@
 import React from "react";
 
-// Example images (replace with your actual images)
 import leader1 from "../../assets/img/aboutUs/l2.png";
 import leader2 from "../../assets/img/aboutUs/l1.png";
 import leader3 from "../../assets/img/aboutUs/l2.png";
@@ -37,7 +36,7 @@ const Leadership: React.FC = () => {
         </h1>
       </div>
       {/* Desktop & Tablet */}
-      <div className="hidden md:grid grid-cols-3 justify-center mt-20 gap-x-20 gap-y-6 pb-14 w-11/12 md:w-5/6 mx-auto">
+      <div className="hidden md:grid grid-cols-3 justify-center mt-18 gap-x-25 gap-y-6 pb-10 w-11/12 md:w-4/6 mx-auto">
         {leaders.map((leader, index) => (
           <div
             key={index}
@@ -91,7 +90,7 @@ const Leadership: React.FC = () => {
         <img
           src={lineart}
           alt="Decorative"
-          className="absolute w-[160px]  right-0 -translate-y-[65%] z-10 pointer-events-none"
+          className="absolute w-[120px]  right-0 -translate-y-72 z-10 pointer-events-none"
         />
       </div>
     </section>

@@ -17,10 +17,10 @@ const OurStory: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="w-full flex flex-col lg:flex-row lg:items-start lg:justify-between lg:mt-12 text-ternary">
+      <div className="w-full flex flex-col lg:flex-row lg:items-start lg:justify-between lg:mt-10 text-ternary">
         {/* Para */}
         <div className="lg:w-[640px] text-justify space-y-6 font-light">
-          <p className="text-[18px] md:text-[20px] lg:text-[22px]">
+          <p className="text-base md:text-xl lg:text-[22px]">
             Founded in 2000, Mahinda Panagoda Funeral Directors has been
             dedicated to providing complete funeral services under one roof.
             From basic to VIP funerals, we offer 24-hour support, modern
@@ -28,7 +28,7 @@ const OurStory: React.FC = () => {
             ensuring every farewell is handled with dignity and care.
           </p>
 
-          <p className="text-[18px] md:text-[20px] lg:text-[22px]">
+          <p className="text-base md:text-xl lg:text-[22px]">
             Led by Mr. Mahinda Panagoda’s U.K. experience as a Funeral Director
             and Embalmer, and supported by Mrs. Radanika Panagoda’s expertise in
             floral design, we have earned a reputation for professional,
@@ -37,12 +37,12 @@ const OurStory: React.FC = () => {
         </div>
 
         {/* Right Section */}
-        <div className="relative lg:w-[500px] md:h-[210px] h-[240px] lg:h-[260px] mt-8 lg:mt-0">
+        <div className="relative lg:w-1/2 md:h-[210px] h-[240px] lg:h-[260px] mt-8 lg:mt-0">
           {/* Overlay */}
           <div
-            className="absolute -top-3.5 lg:left-0 md:left-10 left-9 
-      lg:w-full md:w-[716px] w-[358px]  
-      md:h-[290px] h-[240px] lg:h-[310px] 
+            className="absolute -top-3.5 lg:left-32 md:left-10 left-9 
+      lg:w-[500px] md:w-[716px] w-[358px]  
+      md:h-[300px] h-[240px] lg:h-[310px] 
       bg-black/6 rounded-tl-[20px] rounded-br-[20px]
       hidden md:block"
           ></div>
@@ -51,9 +51,9 @@ const OurStory: React.FC = () => {
           <img
             src={MpImg}
             alt="Mahinda Panagoda Funeral Directors"
-            className="absolute top-3 lg:top-3 left-1 right-auto md:left-0 md:right-auto lg:right-8 lg:left-auto md:top-5 
-      w-[400px] h-[250px] md:w-[723px] md:h-[330px] lg:w-[500px] lg:h-[330px] 
-      rounded-tl-[20px] rounded-br-[20px] grayscale-75 object-cover"
+            className="absolute top-3 lg:top-3 left-0 right-auto md:left-0 md:right-auto lg:right-8 lg:left-auto md:top-5 
+      w-[393px] h-[250px] md:w-[723px] md:h-[330px] lg:w-[500px] lg:h-[330px] 
+      rounded-tl-[20px] rounded-br-[20px] grayscale-75 object-cover  "
           />
         </div>
       </div>
@@ -109,7 +109,7 @@ const OurStory: React.FC = () => {
           <img
             src={MPImage}
             alt="Mr. Mahinda Panagoda"
-            className="w-46 h-60 object-contain -translate-x-4 translate-y-20"
+            className="w-42 h-60 object-contain -translate-x-4 translate-y-20"
           />
 
           {/* Topic in Center */}
@@ -125,7 +125,7 @@ const OurStory: React.FC = () => {
           <img
             src={nafdLogo}
             alt="NAFD UK Logo"
-            className="w-35 h-35 object-contain translate-y-20"
+            className="w-34 h-34 object-contain translate-y-27"
           />
         </div>
 
@@ -138,7 +138,7 @@ const OurStory: React.FC = () => {
         </ul>
       </div>
       {/* Founder Section - Mobile Only Layout */}
-      <div className="flex flex-col md:hidden mt-20 items-center w-full px-4">
+      <div className="flex flex-col md:hidden mt-15 items-center w-full px-4">
         {/* Top Row: Image Left + Logo Right */}
         <div className="flex w-full justify-between items-center">
           {/* Founder Image */}

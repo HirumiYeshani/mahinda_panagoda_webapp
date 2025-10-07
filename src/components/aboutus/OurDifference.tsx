@@ -32,7 +32,7 @@ const OurDifference: React.FC = () => {
       icon: svg1,
       isMiddle: false,
     },
-    { description: "", icon: "", isMiddle: true }, 
+    { description: "", icon: "", isMiddle: true },
     {
       title: "24/7 Assistance",
       description:
@@ -147,42 +147,41 @@ const OurDifference: React.FC = () => {
         ))}
       </div>
 
-     {/* Mobile Layout */}
-<div className="grid grid-cols-2 gap-x-4 gap-y-6 md:hidden w-full">
-  {cards.map((card, index) => (
-    <div
-      key={index}
-      className={`flex flex-col items-center rounded-lg shadow-md 
+      {/* Mobile Layout */}
+      <div className="grid grid-cols-2 gap-x-4 gap-y-6 md:hidden w-full">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className={`flex flex-col items-center rounded-lg shadow-md 
         ${
           card.isMiddle
-            ? "bg-gradient-to-b from-black to-secondary justify-center p-4 col-span-2 w-2/4 mx-auto -my-2"
+            ? "bg-gradient-to-b from-black to-secondary w-full p-4 col-span-2  mx-auto -my-2 hidden"
             : "bg-white/10 hover:bg-white/20 p-3"
         }`}
-    >
-      {/* Logo / Icon */}
-      <img
-        src={card.isMiddle ? MPLogo : card.icon}
-        alt={card.title}
-        className={`${card.isMiddle ? "w-40 h-20" : "w-10 h-10"}`}
-      />
+          >
+            {/* Logo / Icon */}
+            <img
+              src={card.isMiddle ? MPLogo : card.icon}
+              alt={card.title}
+              className={`${card.isMiddle ? "w-40 h-20" : "w-10 h-10"}`}
+            />
 
-      {/* Title */}
-      <h3 className="font-bold text-sm text-ternary text-center mt-2">
-        {card.title}
-      </h3>
+            {/* Title */}
+            <h3 className="font-bold text-sm text-ternary text-center mt-2">
+              {card.title}
+            </h3>
 
-      {/* Description */}
-      <p
-        className={`text-ternary text-center ${
-          card.isMiddle ? "text-sm mt-2" : "text-xs mt-1"
-        }`}
-      >
-        {card.description}
-      </p>
-    </div>
-  ))}
-</div>
-
+            {/* Description */}
+            <p
+              className={`text-ternary text-center ${
+                card.isMiddle ? "text-sm mt-2" : "text-xs mt-1"
+              }`}
+            >
+              {card.description}
+            </p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
