@@ -137,10 +137,10 @@ const ImageCollection = () => {
     <div className="w-full mx-auto text-ternary">
       {/* Header */}
       <div className="mb-6 text-center">
-        <h1 className="text-sm font-belda text-ternary/70 mb-2 uppercase tracking-wider">
+        <h1 className="text-xs font-belda text-ternary/70 mb-1 lg:mb-2 uppercase tracking-wider">
           Captured Moments
         </h1>
-        <h1 className="md:text-5xl text-3xl leading-[41px] md:leading-[62px]  font-belda font-semibold">
+        <h1 className="lg:text-5xl md:text-3xl text-2xl leading-[41px] md:leading-[62px]  font-belda font-semibold">
           Image Collections
         </h1>
       </div>
