@@ -16,24 +16,42 @@ const navLinks = [
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    // Lock scroll when mobile menu is open
     if (isOpen) {
-      // Lock scroll
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
       document.body.style.width = "100%";
     } else {
-      // Restore scroll
       document.body.style.overflow = "";
       document.body.style.position = "";
       document.body.style.width = "";
     }
   }, [isOpen]);
 
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > 50) setIsScrolled(true);
+    else setIsScrolled(false);
+  };
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+
   return (
-    <nav className="absolute top-0 left-0 w-full  text-white py-12 pt-3 z-20 ">
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black [via-black/50] to-transparent pointer-events-none"></div>
+<nav
+  className={`
+    w-full text-white py-12 pt-3 z-20 transition-colors duration-300
+    absolute top-0 bg-gradient-to-b from-black [via-black/100] to-transparent
+    lg:${isScrolled ? "fixed top-0 bg-black shadow-md" : "absolute top-0 bg-gradient-to-b from-black [via-black/100] to-transparent"}
+  `}
+>
+
+
+
 
       <div className="w-5/6 mx-auto flex items-center justify-between px-2 md:px-14 lg:px-10">
         {/* Logo */}
@@ -49,7 +67,7 @@ const Navbar: React.FC = () => {
             <img
               src={sublogo}
               alt="Mahinda Panagoda Mobile Logo"
-              className="block lg:hidden h-auto w-auto md:-translate-x-10"
+              className="block lg:hidden w-72 h-auto md:w-auto md:h-auto md:-translate-x-10"
             />
           </NavLink>
         </div>
@@ -100,35 +118,23 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="absolute top-0 left-0 w-full h-[630px] bg-black/90 flex flex-col z-50">
+        <div className="absolute top-0 left-0 w-full h-[600px] bg-black/90 flex flex-col z-50">
           {/* Close Button */}
-          <div className="flex justify-end p-6">
+          <div className="flex justify-end pt-6 w-11/12 mx-auto">
             <button onClick={() => setIsOpen(false)}>
               <X size={28} className="text-white" />
             </button>
           </div>
-          {/* Buttons */}
-          <div className="flex flex-row space-x-6 mt-6 ml-6 w-full">
-            <button
-              onClick={() => (window.location.href = "tel:+94711000700")}
-              className="px-6 py-3 w-fit bg-primary hover:bg-primary/70 text-black font-bold rounded-lg text-lg cursor-pointer"
-            >
-              +94 71 1000 700
-            </button>
-            <button className="px-16 py-3 w-fit border-2 border-white rounded-lg text-lg cursor-pointer ">
-              Login
-            </button>
-          </div>
 
           {/* Mobile Menu Links */}
-          <div className="flex flex-col items-start mt-4 lg:hidden w-full">
+          <div className="flex flex-col items-start mt-4 lg:hidden w-11/12 mx-auto">
             {navLinks.map((link) => (
               <div key={link.name} className="w-full">
                 <NavLink
                   to={link.path}
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
-                    `relative block w-fit text-white text-2xl py-4 px-6
+                    `relative block w-fit text-white text-xl py-4 
             ${
               isActive
                 ? "after:content-[''] after:block after:w-[50%] after:h-[2px] after:bg-white after:mt-1"
@@ -140,6 +146,19 @@ const Navbar: React.FC = () => {
                 </NavLink>
               </div>
             ))}
+          </div>
+
+          <div className="flex flex-row mt-6 w-11/12 mx-auto justify-between items-center">
+            <button
+              onClick={() => (window.location.href = "tel:+94711000700")}
+              className="px-6 py-3 bg-primary hover:bg-primary/70 text-black font-bold rounded-lg text-lg cursor-pointer"
+            >
+              +94 71 1000 700
+            </button>
+
+            <button className="px-14 py-3 border-2 border-white rounded-lg text-lg cursor-pointer">
+              Login
+            </button>
           </div>
         </div>
       )}

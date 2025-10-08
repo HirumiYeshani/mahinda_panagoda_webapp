@@ -1,6 +1,13 @@
 import React from "react";
 
-import svg1 from "../../assets/img/aboutUs/handheart.svg";
+import svg1 from "../../assets/img/aboutUs/care.svg";
+import svg2 from "../../assets/img/aboutUs/clock.svg";
+import svg3 from "../../assets/img/aboutUs/dedication.svg";
+import svg4 from "../../assets/img/aboutUs/dignity.svg";
+import svg5 from "../../assets/img/aboutUs/guidance.svg";
+import svg6 from "../../assets/img/aboutUs/integrity.svg";
+import svg7 from "../../assets/img/aboutUs/professionalism.svg";
+import svg8 from "../../assets/img/aboutUs/respect.svg";
 import MPLogo from "../../assets/img/aboutUs/MPlogo.svg";
 
 const OurDifference: React.FC = () => {
@@ -16,20 +23,20 @@ const OurDifference: React.FC = () => {
       title: "Expert Professionalism",
       description:
         "Delivering high-quality funeral services with skill, reliability, and dignity.",
-      icon: svg1,
+      icon: svg7,
       isMiddle: false,
     },
     {
       title: "Trusted Integrity",
       description:
         "Building trust through honest guidance and transparent practices.",
-      icon: svg1,
+      icon: svg6,
       isMiddle: false,
     },
     {
       title: "Respect for Tradition",
       description: "Honoring cultural and religious customs in every farewell.",
-      icon: svg1,
+      icon: svg8,
       isMiddle: false,
     },
     { description: "", icon: "", isMiddle: true },
@@ -37,28 +44,28 @@ const OurDifference: React.FC = () => {
       title: "24/7 Assistance",
       description:
         "Available around the clock to offer immediate help and guidance.",
-      icon: svg1,
+      icon: svg2,
       isMiddle: false,
     },
     {
       title: "Personalized Guidance",
       description:
         "Tailoring every arrangement to reflect each family’s unique wishes.",
-      icon: svg1,
+      icon: svg5,
       isMiddle: false,
     },
     {
       title: "Service Dignity in Service",
       description:
         "Ensuring every step of the process is handled with utmost respect.",
-      icon: svg1,
+      icon: svg4,
       isMiddle: false,
     },
     {
       title: "Dedicated Excellence",
       description:
         "Continuously improving services to provide the best care possible.",
-      icon: svg1,
+      icon: svg3,
       isMiddle: false,
     },
   ];
@@ -66,10 +73,10 @@ const OurDifference: React.FC = () => {
   return (
     <section className="w-11/12 md:w-5/6 mx-auto ">
       <div className="mb-6 text-center">
-        <h1 className="text-sm font-belda text-ternary/70 mb-2 uppercase tracking-wider">
+        <h1 className="text-xs font-belda text-ternary/70 mb-1 lg:mb-2 uppercase tracking-wider">
           Why Families trust us
         </h1>
-        <h1 className="md:text-5xl text-3xl leading-[41px] md:leading-[62px]  font-belda font-semibold">
+        <h1 className="lg:text-5xl md:text-3xl text-2xl leading-[41px] md:leading-[62px]  font-belda font-semibold">
           Our Difference
         </h1>
       </div>
@@ -90,7 +97,7 @@ const OurDifference: React.FC = () => {
             ) : (
               <>
                 {/* Icon */}
-                <div className="md:w-14 md:h-14 -translate-y-7 flex-shrink-0 md:mb-0 md:mr-4">
+                <div className="md:w-24 md:h-24 lg:w-18 lg:h-18 -translate-y-7 flex-shrink-0 md:mb-0 md:mr-4">
                   <img
                     src={card.icon}
                     alt={card.title}
@@ -148,7 +155,7 @@ const OurDifference: React.FC = () => {
       </div>
 
       {/* Mobile Layout */}
-      <div className="grid grid-cols-2 gap-x-4 gap-y-6 md:hidden w-full">
+      <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:hidden w-full">
         {cards.map((card, index) => (
           <div
             key={index}
@@ -173,8 +180,8 @@ const OurDifference: React.FC = () => {
 
             {/* Description */}
             <p
-              className={`text-ternary text-center ${
-                card.isMiddle ? "text-sm mt-2" : "text-xs mt-1"
+              className={`text-ternary text-center font-light ${
+                card.isMiddle ? "text-sm mt-2" : "text-xs mt-1 "
               }`}
             >
               {card.description}

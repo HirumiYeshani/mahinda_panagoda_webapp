@@ -19,7 +19,7 @@ const VisionMission: React.FC = () => {
             </p>
           </div>
           {/* Mission Card */}
-          <div className="bg-white/90 rounded-lg p-8 px-4 text-center md:text-left relative z-20">
+          <div className="bg-white/90 rounded-lg p-8 px-4 text-center md:text-left relative z-12">
             <p className="text-sm text-ternary/70 text-center font-[belda] uppercase mb-4 mt-6 tracking-wider">
               Our Mission
             </p>
@@ -59,7 +59,7 @@ const VisionMission: React.FC = () => {
           </div>
 
           {/* Mission Card */}
-          <div className="bg-white/90 rounded-lg p-6 text-center relative z-20">
+          <div className="bg-white/90 rounded-lg p-6 text-center relative z-11">
             <p className="text-sm text-ternary/70 text-center font-[belda] uppercase mb-4 mt-4 tracking-wider">
               Our Mission
             </p>

@@ -205,10 +205,10 @@ const PublicFigures = () => {
     <>
       {/* Heading */}
       <div className="mb-6 text-center">
-        <h1 className="text-sm font-belda text-ternary/70 mb-2 uppercase tracking-wider">
+        <h1 className="text-xs font-belda text-ternary/70 mb-1 lg:mb-2 uppercase tracking-wider">
           Testimonials
         </h1>
-        <h1 className="md:text-5xl text-3xl leading-[41px] md:leading-[62px] font-belda font-semibold">
+        <h1 className="lg:text-5xl md:text-3xl text-2xl leading-[41px] md:leading-[62px]  font-belda font-semibold">
           Public Figures
         </h1>
       </div>
@@ -297,7 +297,7 @@ const PublicFigures = () => {
       </div>
       {/* MOBILE + TABLET */}
       <div className="block lg:hidden">
-        <div className="grid grid-cols-2 gap-2 md:gap-6 w-full">
+        <div className="grid grid-cols-2 gap-2 md:gap-6 gap-y-2 w-full">
           {testimonials.slice(0, mobileVisibleCount).map((item, idx) => {
             const itemsPerRow = 2; // two columns on mobile/tablet
             const totalVisible = mobileVisibleCount;
@@ -310,7 +310,7 @@ const PublicFigures = () => {
               <div
                 key={item.id}
                 onClick={() => setSelectedCard(item)}
-                className="rounded-xl flex flex-col items-center text-center relative overflow-hidden "
+                className="rounded-xl flex flex-col items-center text-center relative overflow-hidden"
               >
                 <div className="w-full relative aspect-[5/4] md:aspect-[6/6] pt-1">
                   {/* Background */}
