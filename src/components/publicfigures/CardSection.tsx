@@ -312,7 +312,7 @@ const PublicFigures = () => {
                 onClick={() => setSelectedCard(item)}
                 className="rounded-xl flex flex-col items-center text-center relative overflow-hidden"
               >
-                <div className="w-full relative aspect-[5/4] md:aspect-[6/6] pt-1">
+                <div className="w-full relative h-auto md:aspect-[6/6] pt-1">
                   {/* Background */}
                   <div
                     className="absolute inset-0 bg-cover bg-center opacity-40"

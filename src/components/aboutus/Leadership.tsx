@@ -12,7 +12,7 @@ const Leadership: React.FC = () => {
   const slider = {
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
   };
 

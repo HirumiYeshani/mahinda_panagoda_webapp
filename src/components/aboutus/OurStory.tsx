@@ -2,7 +2,7 @@ import React from "react";
 
 import MPImage from "../../assets/img/aboutUs/MP.svg";
 import MpImg from "../../assets/img/aboutUs/mp.webp";
-import nafdLogo from "../../assets/img/aboutUs/logo.svg";
+import nafdLogo from "../../assets/img/aboutUs/UKlogo.png";
 
 const OurStory: React.FC = () => {
   return (
@@ -91,9 +91,9 @@ const OurStory: React.FC = () => {
             <img
               src={nafdLogo}
               alt="NAFD UK Logo"
-              className="md:w-28 w-32 lg::w-36 mt-6 md:mt-13"
+              className="w-36 md:w-40 lg:w-36 mt-6 md:mt-10 object-contain"
             />
-            <p className="text-center text-xs sm:text-sm font-bold mt-2 leading-snug">
+            <p className="text-center text-sm md:text-base font-bold mt-3 leading-snug">
               N A F D – U.K <br />
               Member Since 2000
             </p>
@@ -121,12 +121,18 @@ const OurStory: React.FC = () => {
             </span>
           </h3>
 
-          {/* Right Logo */}
-          <img
-            src={nafdLogo}
-            alt="NAFD UK Logo"
-            className="w-34 h-34 object-contain translate-y-27"
-          />
+          {/* Right Logo + Text */}
+          <div className="flex flex-col items-center translate-y-23">
+            <img
+              src={nafdLogo}
+              alt="NAFD UK Logo"
+              className="w-34 h-34 object-contain"
+            />
+            <p className="text-center text-base font-semibold leading-tight mt-2">
+              N A F D – U.K <br />
+              <span className="text-sm">Member Since 2000</span>
+            </p>
+          </div>
         </div>
 
         {/* Points Underneath */}
@@ -139,39 +145,46 @@ const OurStory: React.FC = () => {
       </div>
       {/* Founder Section - Mobile Only Layout */}
       <div className="flex flex-col md:hidden mt-15 items-center w-full px-4">
-        {/* Top Row: Image Left + Logo Right */}
-        <div className="flex w-full justify-between items-center">
-          {/* Founder Image */}
+        {/* Top Row: Image Left + Name/Title Right */}
+        <div className="flex w-full justify-between items-start">
+          {/* Left - Founder Image */}
           <img
             src={MPImage}
             alt="Mr. Mahinda Panagoda"
             className="w-28 h-28 object-contain"
           />
 
-          {/* Logo on Right */}
-          <img
-            src={nafdLogo}
-            alt="NAFD UK Logo"
-            className="w-28 h-28 object-contain"
-          />
-        </div>
-
-        {/* Bottom: Text + Points */}
-        <div className="w-full mt-4 ">
-          <h3 className="text-lg font-semibold text-left">
-            Mr. Mahinda Panagoda
-            <br />
+          {/* Right - Name + Title */}
+          <div className="flex flex-col justify-center text-right ml-3 mt-5">
+            <h3 className="text-lg font-semibold">Mr. Mahinda Panagoda</h3>
             <span className="font-light text-sm">
               Founder & Visionary Leader
             </span>
-          </h3>
+          </div>
+        </div>
 
-          <ul className="list-[circle] text-xs font-light mt-2 space-y-1 marker:text-black pl-4">
+        {/* Bottom Row: Points Left + Logo Right */}
+        <div className="flex w-full justify-between items-start mt-6">
+          {/* Left - Points List */}
+          <ul className="list-[circle] text-xs font-light space-y-1 marker:text-black pl-4 w-3/5">
             <li>Internationally trained Funeral Director & Embalmer</li>
             <li>MBA in Strategic Management & Leadership (UK)</li>
             <li>Diploma in Human Resource Management (SL)</li>
             <li>30+ years of funeral service expertise</li>
           </ul>
+
+          {/* Right - Logo + Text */}
+          <div className="flex flex-col items-center w-2/5">
+            <img
+              src={nafdLogo}
+              alt="NAFD UK Logo"
+              className="w-20 h-20 object-contain"
+            />
+            <p className="text-center text-[10px] font-bold leading-tight mt-1">
+              N A F D – U.K <br />
+              Member Since 2000
+            </p>
+          </div>
         </div>
       </div>
     </section>

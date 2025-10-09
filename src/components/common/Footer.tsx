@@ -181,11 +181,11 @@ const Footer: React.FC = () => {
           {/* Mobile Layout */}
           <div className="block md:hidden space-y-8 min-h-[200px">
             {/* Logo & Description */}
-            <div className="text-left">
+            <div className="text-left mt-4">
               <img
                 src={logo}
                 alt="Logo"
-                className="object-contain w-[300px] mb-4"
+                className="object-contain w-[300px] mb-2"
               />
               <p className="text-base text-white font-light leading-6 text-justify">
                 Mahinda Panagoda Funeral Directors was inaugurated in 2000 with
@@ -287,7 +287,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start gap-10">
             {/* Left: Logo + Description */}
             <div className="w-2/4 text-left">
-              <img src={logo} alt="Logo" className="w-72 mb-4" />
+              <img src={logo} alt="Logo" className="w-96 mb-4" />
               <p className="text-base text-white/75 leading-6 text-justify">
                 Mahinda Panagoda Funeral Directors was inaugurated in 2000 with
                 all Funeral services to cater the clients under one roof from
@@ -297,7 +297,7 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Right: Social Icons  */}
-            <div className="w-2/4 flex justify-end items-end space-x-6 mt-25 -translate-x-27">
+            <div className="w-2/4 flex justify-end items-end space-x-6 mt-25 ">
               {socialIcons.map((icon, idx) => (
                 <a key={idx} href={icon.link} target="_blank" rel="noreferrer">
                   <img
@@ -377,7 +377,7 @@ const Footer: React.FC = () => {
           {/* Main content */}
           <div className="w-5/6 mx-auto container flex flex-col sm:flex-col md:flex-row items-center justify-between py-4 text-xs text-white/80 space-y-2 md:space-y-0">
             {/* Left content */}
-            <div className="flex items-center space-x-2 ml-6 lg:ml-0 md:ml-0 md:space-x-4 text-xs -translate-x-0.5 mt-4">
+            <div className="flex items-center space-x-2 ml-6 lg:ml-0 md:ml-0 md:space-x-4 lg:pt-0 pt-3 text-xs -translate-x-0.5 mt-4">
               <span>All rights reserved | Developed by</span>
               <img
                 src={AIOHlogo}

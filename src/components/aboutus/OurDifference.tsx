@@ -2,10 +2,10 @@ import React from "react";
 
 import svg1 from "../../assets/img/aboutUs/care.svg";
 import svg2 from "../../assets/img/aboutUs/clock.svg";
-import svg3 from "../../assets/img/aboutUs/dedication.svg";
+import svg3 from "../../assets/img/aboutUs/dedication.png";
 import svg4 from "../../assets/img/aboutUs/dignity.svg";
-import svg5 from "../../assets/img/aboutUs/guidance.svg";
-import svg6 from "../../assets/img/aboutUs/integrity.svg";
+import svg5 from "../../assets/img/aboutUs/guidance.png";
+import svg6 from "../../assets/img/aboutUs/integrity.png";
 import svg7 from "../../assets/img/aboutUs/professionalism.svg";
 import svg8 from "../../assets/img/aboutUs/respect.svg";
 import MPLogo from "../../assets/img/aboutUs/MPlogo.svg";
@@ -32,6 +32,7 @@ const OurDifference: React.FC = () => {
         "Building trust through honest guidance and transparent practices.",
       icon: svg6,
       isMiddle: false,
+      size: "w-14 h-14",
     },
     {
       title: "Respect for Tradition",
@@ -53,6 +54,7 @@ const OurDifference: React.FC = () => {
         "Tailoring every arrangement to reflect each family’s unique wishes.",
       icon: svg5,
       isMiddle: false,
+      size: "w-14 h-14",
     },
     {
       title: "Service Dignity in Service",
@@ -101,7 +103,7 @@ const OurDifference: React.FC = () => {
                   <img
                     src={card.icon}
                     alt={card.title}
-                    className="w-full h-full"
+                    className={`mx-auto ${card.size || "w-16 h-16"}`} 
                   />
                 </div>
 
