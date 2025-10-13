@@ -47,16 +47,18 @@ const Navbar: React.FC = () => {
   return (
 <nav
   className={`w-full text-white z-20 transition-all duration-300
-    ${isScrolled
-      ? "lg:fixed lg:bg-black py-3" // shorter padding when sticky
-      : "absolute bg-[linear-gradient(to_bottom,black_10%,black_10%,transparent_100%)] py-12 pt-3" // taller padding when overlay
-    }`}
+    ${isScrolled ? "lg:fixed lg:bg-black py-3" : "absolute py-12 pt-3"}
+  `}
   style={{
     transform: isVisible ? "translateY(0)" : "translateY(-100%)",
     transition: "transform 0.3s ease-in-out",
   }}
 >
-      {/* NAVBAR INNER CONTENT */}
+  {/* Gradient Overlay */}
+  {!isScrolled && (
+    <div className="absolute inset-0 bg-gradient-to-b from-black from-10% via-black via-10% to-transparent -z-10"></div>
+  )}
+      {/* Navbar content */}
       <div className="w-5/6 mx-auto flex items-center justify-between px-2 md:px-14 lg:px-10">
         {/* Logo */}
         <div className="flex items-center pt-2 lg:pt-0 -translate-x-10">
@@ -69,7 +71,7 @@ const Navbar: React.FC = () => {
             <img
               src={sublogo}
               alt="Mahinda Panagoda Mobile Logo"
-              className="block lg:hidden w-72 h-auto md:w-auto md:h-auto md:-translate-x-10"
+              className="block lg:hidden w-64 h-auto md:w-auto md:h-auto md:-translate-x-10"
             />
           </NavLink>
         </div>

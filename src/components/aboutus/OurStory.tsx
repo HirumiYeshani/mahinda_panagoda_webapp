@@ -43,7 +43,7 @@ const OurStory: React.FC = () => {
             className="absolute -top-3.5 lg:left-32 md:left-10 left-9 
       lg:w-[500px] md:w-[716px] w-[358px]  
       md:h-[300px] h-[240px] lg:h-[310px] 
-      bg-black/6 rounded-tl-[20px] rounded-br-[20px]
+      bg-[#f0efed] rounded-tl-[20px] rounded-br-[20px]
       hidden md:block"
           ></div>
 
@@ -144,7 +144,7 @@ const OurStory: React.FC = () => {
         </ul>
       </div>
       {/* Founder Section - Mobile Only Layout */}
-      <div className="flex flex-col md:hidden mt-15 items-center w-full px-4">
+      <div className="flex flex-col md:hidden mt-15 items-center w-full px-4 bg-[#f0efed] py-4 rounded-lg">
         {/* Top Row: Image Left + Name/Title Right */}
         <div className="flex w-full justify-between items-start">
           {/* Left - Founder Image */}
@@ -164,7 +164,7 @@ const OurStory: React.FC = () => {
         </div>
 
         {/* Bottom Row: Points Left + Logo Right */}
-        <div className="flex w-full justify-between items-start mt-6">
+        <div className="flex w-full justify-between items-center mt-6">
           {/* Left - Points List */}
           <ul className="list-[circle] text-xs font-light space-y-1 marker:text-black pl-4 w-3/5">
             <li>Internationally trained Funeral Director & Embalmer</li>
@@ -174,11 +174,11 @@ const OurStory: React.FC = () => {
           </ul>
 
           {/* Right - Logo + Text */}
-          <div className="flex flex-col items-center w-2/5">
+          <div className="flex flex-col items-center justify-center  w-2/5 -mt-4">
             <img
               src={nafdLogo}
               alt="NAFD UK Logo"
-              className="w-20 h-20 object-contain"
+              className="w-26 h-26 object-contain"
             />
             <p className="text-center text-[10px] font-bold leading-tight mt-1">
               N A F D – U.K <br />

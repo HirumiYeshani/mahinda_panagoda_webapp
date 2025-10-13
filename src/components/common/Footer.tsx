@@ -286,7 +286,7 @@ const Footer: React.FC = () => {
           {/* Row 1: Logo + Description + Social Icons */}
           <div className="flex flex-col sm:flex-row justify-between items-start gap-10">
             {/* Left: Logo + Description */}
-            <div className="w-2/4 text-left">
+            <div className="w-3/4 text-left">
               <img src={logo} alt="Logo" className="w-96 mb-4" />
               <p className="text-base text-white/75 leading-6 text-justify">
                 Mahinda Panagoda Funeral Directors was inaugurated in 2000 with
@@ -297,7 +297,7 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Right: Social Icons  */}
-            <div className="w-2/4 flex justify-end items-end space-x-6 mt-25 ">
+            <div className="w-1/4 flex justify-end items-end space-x-6 mt-25 ">
               {socialIcons.map((icon, idx) => (
                 <a key={idx} href={icon.link} target="_blank" rel="noreferrer">
                   <img
@@ -311,7 +311,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Row 2: Quick Links | Packages | Contact Us */}
-          <div className="flex flex-col sm:flex-row gap-10">
+          <div className="flex flex-col sm:flex-row gap-10 mt-1">
             {/* Quick Links */}
             <div className="w-1/3 text-left">
               <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
@@ -382,7 +382,7 @@ const Footer: React.FC = () => {
               <img
                 src={AIOHlogo}
                 alt="Logo"
-                className="w-11 h-auto inline-block align-middle lg:-translate-x-3 -translate-x-1 -lg:translate-y-1 -translate-y-[11%]"
+                className="w-14 h-auto inline-block align-middle lg:-translate-x-3 -translate-x-1 -lg:translate-y-1 -translate-y-[11%]"
               />
             </div>
 

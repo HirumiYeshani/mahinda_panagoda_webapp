@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
               <span className=" text-primary">Notable Personalities</span>
             </h1>
 
-            <p className="text-base lg:text-xl leading-[20px]  lg:leading-[24px] text-white pb-2 sm:pb-4 text-center lg:text-left">
+            <p className="text-sm lg:text-xl leading-[20px]  lg:leading-[24px] text-white pb-2 sm:pb-4 text-center lg:text-left">
               Commemorating those who shaped our society through meaningfull
               lives and contributions
             </p>

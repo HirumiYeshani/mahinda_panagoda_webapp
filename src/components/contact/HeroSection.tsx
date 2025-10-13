@@ -17,7 +17,7 @@ const HeroSection: React.FC = () => {
               Here To Support You,{" "}
               <span className="text-primary">Anytime</span>
             </h1>
-            <p className="text-base lg:text-xl leading-[20px]  lg:leading-[24px] text-white pb-2 sm:pb-4 text-center lg:text-left">
+            <p className="text-sm lg:text-xl leading-[20px]  lg:leading-[24px] text-white pb-2 sm:pb-4 text-center lg:text-left">
               Our compassionate team is available anytime to guide you through
               arrangements with dignity and care
             </p>
